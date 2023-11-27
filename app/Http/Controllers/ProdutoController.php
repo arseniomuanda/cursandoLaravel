@@ -2,16 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Produto;
 use Illuminate\Http\Request;
 
 class ProdutoController extends Controller
 {
+    protected $model;
+    function __construct()
+    {
+        $this->model = new Produto();
+    }
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return 'Olas';
+        return dd($this->model->all());
     }
 
     /**
