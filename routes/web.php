@@ -40,9 +40,9 @@ Route::get('/cliente/{id}/{cat?}', function ($id, $car = '') {
 
 
 #redirecionamento
-/* Route::get('/sobre', function(){
+Route::get('/sobre', function(){
     return redirect('/teste');
-}); */
+});
 
 Route::redirect('/sobre', '/teste');
 
@@ -60,7 +60,7 @@ Route::get('/users', function () {
 
 
 #grupo de routas por perfixe
-/* Route::prefix('admin')->group(function () {
+Route::prefix('admin')->group(function () {
     Route::get('users', function () {
         return 'users';
     });
@@ -74,9 +74,9 @@ Route::get('/users', function () {
         return 'bikes';
     });
 });
- */
+
 #grupo de rotas por name
-/* Route::name('admin.')->group(function () {
+Route::name('admin.')->group(function () {
     Route::get('admin/users', function () {
         return 'users';
     })->name('users');
@@ -92,7 +92,7 @@ Route::get('/users', function () {
     Route::get('admin/bikes', function () {
         return 'bikes';
     })->name('bikes');
-}); */
+});
 
 #grupo de rotas por groupe
 Route::group([
