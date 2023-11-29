@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\Category;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +19,13 @@ class ProdutoFactory extends Factory
     public function definition(): array
     {
         return [
-            
+            'name' => fake()->name,
+            'user' => User::pluck('id')->random(),
+            'price' => fake()->latitude(),
+            'description' => fake()->paragraph(),
+            'image' => fake()->imageUrl(),
+            'cat' => Category::pluck('id')->random(),
+            'qtd' => fake()->numberBetween(12, 30)
         ];
     }
 }
