@@ -11,7 +11,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        $this->app->extend('Faker\Generator', function ($faker, $app) {
+            $faker->addProvider(new AngolanBiProvider($faker));
+            return $faker;
+        });
     }
 
     /**
