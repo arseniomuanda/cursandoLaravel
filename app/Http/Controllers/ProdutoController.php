@@ -18,12 +18,16 @@ class ProdutoController extends Controller
      */
     public function index()
     {
-        $data = [
+        /* $data = [
             'nome' => "Arsenio",
             'idade' => 23,
             'html' => "<h1>oi eu estou a testar</h1>"
-        ];
-        return view('site.empresa', $data);
+        ]; */
+
+        $nome = "Arsenio";
+        $idade = 23;
+        $html = "<h1>oi eu estou a testar</h1>";
+        return view('site.empresa', compact('nome', 'idade', 'html'));
         /* return dd($this->model->all()); */
     }
 
