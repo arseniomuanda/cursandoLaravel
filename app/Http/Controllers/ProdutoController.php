@@ -12,12 +12,19 @@ class ProdutoController extends Controller
     {
         $this->model = new Produto();
     }
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return dd($this->model->all());
+        $data = [
+            'nome' => "Arsenio",
+            'idade' => 23,
+            'html' => "<h1>oi eu estou a testar</h1>"
+        ];
+        return view('site.empresa', $data);
+        /* return dd($this->model->all()); */
     }
 
     /**
