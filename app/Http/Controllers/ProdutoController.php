@@ -23,6 +23,7 @@ class ProdutoController extends Controller
             'idade' => 23,
             'html' => "<h1>oi eu estou a testar</h1>"
         ]; */
+        
 
         $nome = "Arsenio";
         $idade = 23;
