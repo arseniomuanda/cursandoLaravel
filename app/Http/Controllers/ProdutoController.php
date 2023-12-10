@@ -23,12 +23,12 @@ class ProdutoController extends Controller
             'idade' => 23,
             'html' => "<h1>oi eu estou a testar</h1>"
         ]; */
-        
+
 
         $nome = "Arsenio";
         $idade = 23;
         $html = "<h1>oi eu estou a testar</h1>";
-        return view('site.empresa', compact('nome', 'idade', 'html'));
+        return view('site.home', compact('nome', 'idade', 'html'));
         /* return dd($this->model->all()); */
     }
 
