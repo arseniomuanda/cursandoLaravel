@@ -5,12 +5,7 @@
 @section('content')
     <h1>My content hire... </h1>
 
-    <h4>As frutas são:</h4>
-    @forelse ($frutas as $fruta)
-        {{ $fruta }}<br>
-    @empty
-        Array vazio
-    @endforelse
+    @include('includs.mensagem', ['title'=> 'Mensagem de sucesso', 'body'=> "Olá meu nume é Arsénio"])
 
 
 @endsection
