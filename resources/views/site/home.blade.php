@@ -6,6 +6,10 @@
     <h1>My content hire... </h1>
 
     {{ isset($nome) ? "Esta certo" : "errado"}}
+
+    @for ($i = 0; $i <= 10 ; $i++)
+        o valor de i é {{ $i }} <br>
+    @endfor
 @endsection
 
 {{-- Aqui está uma lista de alguns comandos do Blade no Laravel:
