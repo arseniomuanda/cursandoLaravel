@@ -5,18 +5,12 @@
 @section('content')
     <h1>My content hire... </h1>
 
-    {{ isset($nome) ? "Esta certo" : "errado"}}
+    <h4>As frutas são:</h4>
+    @foreach ($frutas as $fruta)
+        {{ $fruta }}<br>
+    @endforeach
 
-    @php
-        $i = 0;
-    @endphp
-
-    @while($i <= 10)
-        o valor de i é {{ $i }} <br>
-        @php
-        $i++;
-        @endphp
-    @endwhile
+    
 @endsection
 
 {{-- Aqui está uma lista de alguns comandos do Blade no Laravel:
