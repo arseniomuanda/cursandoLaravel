@@ -28,7 +28,7 @@ class ProdutoController extends Controller
         $nome = "Arsenio";
         $idade = 23;
         $html = "<h1>oi eu estou a testar</h1>";
-        $frutas = ['banana', 'manga', 'laranja'];
+        $frutas = [];
         return view('site.home', compact('nome', 'idade', 'html', 'frutas'));
         /* return dd($this->model->all()); */
     }

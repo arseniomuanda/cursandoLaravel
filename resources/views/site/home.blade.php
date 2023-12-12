@@ -6,11 +6,13 @@
     <h1>My content hire... </h1>
 
     <h4>As frutas são:</h4>
-    @foreach ($frutas as $fruta)
+    @forelse ($frutas as $fruta)
         {{ $fruta }}<br>
-    @endforeach
+    @empty
+        Array vazio
+    @endforelse
 
-    
+
 @endsection
 
 {{-- Aqui está uma lista de alguns comandos do Blade no Laravel:
