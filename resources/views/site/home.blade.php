@@ -7,9 +7,16 @@
 
     {{ isset($nome) ? "Esta certo" : "errado"}}
 
-    @for ($i = 0; $i <= 10 ; $i++)
+    @php
+        $i = 0;
+    @endphp
+
+    @while($i <= 10)
         o valor de i é {{ $i }} <br>
-    @endfor
+        @php
+        $i++;
+        @endphp
+    @endwhile
 @endsection
 
 {{-- Aqui está uma lista de alguns comandos do Blade no Laravel:
