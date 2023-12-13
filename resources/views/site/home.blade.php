@@ -6,6 +6,12 @@
     <h1>My content hire... </h1>
 
     @include('includs.mensagem', ['title'=> 'Mensagem de sucesso', 'body'=> "Olá meu nume é Arsénio"])
+    
+    @component('components.sidebar')
+        @slot('paragrafo')
+            Texte vindo do slote;
+        @endslot
+    @endcomponent
 
 
 @endsection
