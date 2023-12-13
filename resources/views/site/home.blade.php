@@ -6,7 +6,7 @@
     <h1>My content hire... </h1>
 
     @include('includs.mensagem', ['title'=> 'Mensagem de sucesso', 'body'=> "Olá meu nume é Arsénio"])
-    
+
     @component('components.sidebar')
         @slot('paragrafo')
             Texte vindo do slote;
@@ -15,6 +15,16 @@
 
 
 @endsection
+
+@push('style')
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+@endpush
+
+@push('script')
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+@endpush
 
 {{-- Aqui está uma lista de alguns comandos do Blade no Laravel:
 
