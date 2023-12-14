@@ -25,11 +25,9 @@ class ProdutoController extends Controller
         ]; */
 
 
-        $nome = "Arsenio";
-        $idade = 23;
-        $html = "<h1>oi eu estou a testar</h1>";
-        $frutas = [];
-        return view('site.home', compact('nome', 'idade', 'html', 'frutas'));
+        
+        $products = Produto::all();
+        return view('site.home', compact('products'));
         /* return dd($this->model->all()); */
     }
 
