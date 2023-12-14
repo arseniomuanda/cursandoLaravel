@@ -3,7 +3,7 @@
 @section('content')
     <div class="row container">
         @forelse ($products as $product)
-            <div class="col s12 m3">
+            <div class="col s12 m4">
                 <div class="card">
                     <div class="card-image">
                         <img src="{{ $product->image }}">
@@ -12,7 +12,7 @@
                     </div>
                     <div class="card-content">
                         <span class="card-title">{{ $product->name }}</span>
-                        <p>{{ $product->description}}</p>
+                        <p>{{ Str::limit($product->description, 10, '...')}}</p>
                     </div>
                 </div>
             </div>
