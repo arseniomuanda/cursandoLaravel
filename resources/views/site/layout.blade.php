@@ -19,7 +19,6 @@
             <ul id="nav-mobile" class="left">
                 <li><a href="sass.html">Home</a></li>
                 <li><a href="badges.html">Carrinho</a></li>
-                <li><a href="collapsible.html">JavaScript</a></li>
             </ul>
         </div>
     </nav>

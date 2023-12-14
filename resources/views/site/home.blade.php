@@ -18,6 +18,12 @@
             </div>
         @empty
             <h2>Lista Vazia</h2>
+
         @endforelse
+        
     </div>
+    <div class="row container center">
+
+            {{ $products->links('custom.pagination') }}
+        </div>
 @endsection
