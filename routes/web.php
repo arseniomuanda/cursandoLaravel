@@ -20,3 +20,4 @@ Route::resource('produtos', ProdutoController::class);
 Route::get('/', [SiteController::class, 'index'])->name('site.index');
 
 Route::get('/product/{id}', [SiteController::class, 'details'])->name('site.details');
+Route::get('/category/{id}', [SiteController::class, 'category'])->name('site.category');

@@ -8,7 +8,18 @@
         <div class="col s12 m6">
             <h1>{{ $product->name }}</h1>
             <p>{{ $product->description }}</p>
-            <button class="btn orange btn-large">Compar</button>
+
+            <div class="row">
+                <div class="col m9">
+                    <p>Category: {{ $product->getCategory->name }} <br> 
+                        By: {{ $product->getUser->name }} /
+                        {{ $product->created_at }}</p>
+                </div>
+                <div class="col m3">
+                    <button class="btn orange btn-large">Compar</button>
+                </div>
+            </div>
+
         </div>
     </div>
 @endsection

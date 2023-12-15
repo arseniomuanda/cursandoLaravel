@@ -17,6 +17,17 @@
             <a href="#" class="brand-logo center">Cruso de Laravel</a>
             <ul id="nav-mobile" class="left">
                 <li><a href="/">Home</a></li>
+                <!-- Dropdown Trigger -->
+                <li><a class='dropdown-trigger' href='#' data-target='dw-cat'>Categorias <i
+                            class="material-icons right">expand_more</i></a>
+                    <!-- Dropdown Structure -->
+                    <ul id='dw-cat' class='dropdown-content'>
+                        @foreach ($categoriesMenu as $category)
+                            <li><a href="{{ route('site.category', $category->id) }}">{{ $category->name }}</a></li>
+                        @endforeach
+
+                    </ul>
+                </li>
                 <li><a href="#">Carrinho</a></li>
             </ul>
         </div>
@@ -24,6 +35,15 @@
     @yield('content')
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var elems = document.querySelectorAll('.dropdown-trigger');
+            var instances = M.Dropdown.init(elems, {
+                coverTrigger: false,
+                constrainWidth: false
+            });
+        });
+    </script>
 </body>
 
 </html>
