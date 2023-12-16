@@ -9,7 +9,6 @@
                     <p>{{ $message }}</p>
                 </div>
             </div>
-            
         @endif
         <h4>Seu carrinho possui: {{ $items->count() }}</h4>
         <table class="responsive-table striped">
@@ -21,7 +20,7 @@
                     <th>U. Preço</th>
                     <th>Quantidade</th>
                     <th>Total</th>
-                    <th>Opção</th>
+                    <th colspan="3">Opção</th>
                 </tr>
             </thead>
 
@@ -38,10 +37,16 @@
                                 name="quantity" value="{{ $item->quantity }}"></td>
                         <td>{{ $item->getSubTotal }}</td>
                         <td>
-                            <button class="btn-floating waves-effect waves-light orange"><i
+                            <button class="btn-floating waves-effect waves-light green"><i
                                     class="material-icons">refresh</i></button>
-                            <button class="btn-floating waves-effect waves-light orange"><i
-                                    class="material-icons">delete</i></button>
+                        </td>
+                        <td>
+                            <form action="{{ route('site.remCart') }}" method="post">
+                                @csrf
+                                <input type="hidden" name="id" value="{{ $item->id }}">
+                                <button class="btn-floating waves-effect waves-light red"><i
+                                        class="material-icons">delete</i></button>
+                            </form>
                         </td>
                     </tr>
                 @endforeach
@@ -49,7 +54,7 @@
             <tfoot>
                 <tr>
                     <th colspan="5">Total</th>
-                    <td colspan="">{{ 2334 }}</td>
+                    <td colspan=""></td>
                 </tr>
             </tfoot>
         </table>

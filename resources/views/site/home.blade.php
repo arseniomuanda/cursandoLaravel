@@ -1,5 +1,5 @@
 @extends('site.layout')
-@section('title', 'My title')
+@section('title', 'A-Loja')
 @section('content')
     <div class="row container">
         @forelse ($products as $product)

@@ -41,4 +41,10 @@ class CartController extends Controller
             return redirect()->route('site.cart')->with('success', 'Carrinho actualizado!');
         }
     }
+
+    public function remItem(Request $request)
+    {
+        \Cart::remove($request->id);
+        return redirect()->route('site.cart')->with('success', 'Carrinho actualizado!');
+    }
 }
