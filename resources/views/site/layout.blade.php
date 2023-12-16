@@ -28,7 +28,7 @@
 
                     </ul>
                 </li>
-                <li><a href="{{ route('site.cart') }}">Carrinho</a></li>
+                <li><a href="{{ route('site.cart') }}">Carrinho <span class="new badge orange" data-badge-caption>{{ \Cart::getContent()->count() }}</span></a></li>
             </ul>
         </div>
     </nav>
