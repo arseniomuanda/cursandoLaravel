@@ -10,7 +10,7 @@ class CartController extends Controller
     public function cartList()
     {
         $items = \Cart::getContent();
-        
+
         return view('site.cart', compact('items'));
     }
 
@@ -37,6 +37,8 @@ class CartController extends Controller
                 ),
                 //'associatedModel' => 'Produto'
             ));
+
+            return redirect()->route('site.cart')->with('success', 'Carrinho actualizado!');
         }
     }
 }
