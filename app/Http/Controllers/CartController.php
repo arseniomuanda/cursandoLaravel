@@ -1,0 +1,41 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Produto;
+use Illuminate\Http\Request;
+
+class CartController extends Controller
+{
+    public function cartList()
+    {
+        $items = \Cart::getContent();
+        dd($items);
+    }
+
+    public function addItem(Request $request)
+    {
+        $product = Produto::find($request->id);
+
+        $validated = $request->validate([
+            'name' => 'required|max:255',
+            'image' => 'required',
+            'id' => 'required|numeric',
+            'price' => 'required|numeric',
+            'quantity' => 'required|numeric',
+        ]);
+
+        if ($validated) {
+            \Cart::add(array(
+                'id' => $request->id,
+                'name' =>  $request->name,
+                'price' =>  $request->price,
+                'quantity' =>  $request->quantity,
+                'attributes' => array(
+                    'image' => $request->image
+                ),
+                //'associatedModel' => 'Produto'
+            ));
+        }
+    }
+}

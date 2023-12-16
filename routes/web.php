@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CartController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProdutoController;
 use App\Http\Controllers\SiteController;
@@ -21,3 +22,6 @@ Route::get('/', [SiteController::class, 'index'])->name('site.index');
 
 Route::get('/product/{id}', [SiteController::class, 'details'])->name('site.details');
 Route::get('/category/{id}', [SiteController::class, 'category'])->name('site.category');
+
+Route::get('cart', [CartController::class, 'cartList'])->name('site.cart');
+Route::post('cart', [CartController::class, 'addItem'])->name('site.addCart');

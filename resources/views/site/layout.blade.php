@@ -18,7 +18,7 @@
             <ul id="nav-mobile" class="left">
                 <li><a href="{{ route('site.index') }}">Home</a></li>
                 <!-- Dropdown Trigger -->
-                <li><a class='dropdown-trigger' href='#' data-target='dw-cat'>Categorias <i
+                <li><a class='dropdown-trigger' href="" data-target='dw-cat'>Categorias <i
                             class="material-icons right">expand_more</i></a>
                     <!-- Dropdown Structure -->
                     <ul id='dw-cat' class='dropdown-content'>
@@ -28,7 +28,7 @@
 
                     </ul>
                 </li>
-                <li><a href="#">Carrinho</a></li>
+                <li><a href="{{ route('site.cart') }}">Carrinho</a></li>
             </ul>
         </div>
     </nav>
