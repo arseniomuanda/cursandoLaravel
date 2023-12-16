@@ -1,5 +1,5 @@
 @extends('site.layout')
-@section('title', 'Detalhes')
+@section('title', "Detalhes - $product->name")
 @section('content')
     <div class="row container">
         <br>

@@ -10,7 +10,8 @@ class CartController extends Controller
     public function cartList()
     {
         $items = \Cart::getContent();
-        dd($items);
+        
+        return view('site.cart', compact('items'));
     }
 
     public function addItem(Request $request)
