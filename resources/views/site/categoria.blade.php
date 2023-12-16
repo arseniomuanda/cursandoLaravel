@@ -2,7 +2,7 @@
 @section('title', 'My title')
 @section('content')
     <div class="row container">
-        <h3>Categoria: {{ Str::ucfirst($category->name) }}</h3>
+        <h4>Categoria: {{ Str::ucfirst($category->name) }}</h4>
         @forelse ($products as $product)
             <div class="col s12 m4">
                 <div class="card">

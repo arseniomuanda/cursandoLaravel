@@ -2,20 +2,24 @@
 @section('title', 'Detalhes')
 @section('content')
     <div class="row container">
+        <br>
         <div class="col s12 m6">
             <img src="{{ $product->image }}" class="responsive-img" alt="" srcset="">
         </div>
         <div class="col s12 m6">
-            <h1>{{ $product->name }}</h1>
+            <h5>{{ $product->name }}</h5>
+            <h5>AOA {{ number_format($product->price, 2, ',', '.') }}</h5>
             <p>{{ $product->description }}</p>
 
             <div class="row">
                 <div class="col m9">
-                    <p>Category: {{ $product->getCategory->name }} <br> 
+                    <p>Category: {{ $product->getCategory->name }} <br>
                         By: {{ $product->getUser->name }} /
                         {{ $product->created_at }}</p>
                 </div>
-                <div class="col m3">
+            </div>
+            <div class="row">
+                <div class="right">
                     <button class="btn orange btn-large">Compar</button>
                 </div>
             </div>

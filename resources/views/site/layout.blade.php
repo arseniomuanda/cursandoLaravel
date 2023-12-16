@@ -16,7 +16,7 @@
         <div class="nav-wrapper container">
             <a href="#" class="brand-logo center">Cruso de Laravel</a>
             <ul id="nav-mobile" class="left">
-                <li><a href="/">Home</a></li>
+                <li><a href="{{ route('site.index') }}">Home</a></li>
                 <!-- Dropdown Trigger -->
                 <li><a class='dropdown-trigger' href='#' data-target='dw-cat'>Categorias <i
                             class="material-icons right">expand_more</i></a>
