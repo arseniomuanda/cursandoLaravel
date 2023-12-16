@@ -25,7 +25,7 @@
                         </td>
                         <td>{{ $item->name }}</td>
                         <td>{{ number_format($item->price, 2, ',' . '.') }}</td>
-                        <td style="width: 40px"><input type="number" name="quantity" value="{{ $item->quantity }}"></td>
+                        <td style="width: 40px; font-weight: 900"><input class="center white" type="number" name="quantity" value="{{ $item->quantity }}"></td>
                         <td>{{ $item->getSubTotal }}</td>
                         <td>
                             <button class="btn-floating waves-effect waves-light orange"><i
