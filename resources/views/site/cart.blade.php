@@ -2,6 +2,7 @@
 @section('title', 'Carrinho')
 @section('content')
     <div class="row container">
+
         @if ($message = Session::get('success'))
             <div class="card green">
                 <div class="card-content white-text">
@@ -10,6 +11,16 @@
                 </div>
             </div>
         @endif
+
+        @if ($message = Session::get('info'))
+            <div class="card blue">
+                <div class="card-content white-text">
+                    <span class="card-title">{{ Session::get('subjet') }}</span>
+                    <p>{{ $message }}</p>
+                </div>
+            </div>
+        @endif
+
         <h4>Seu carrinho possui: {{ $items->count() }}</h4>
         <table class="responsive-table striped">
             <thead>
@@ -32,16 +43,24 @@
                                     alt="{{ $item->name }}" width="40" height="40" class="circle"></a>
                         </td>
                         <td>{{ $item->name }}</td>
-                        <td>AOA {{ number_format($item->price, 2, ',' . '.') }}</td>
-                        <td style="width: 40px;"><input style="font-weight:900;" class="center white" type="number"
-                                name="quantity" value="{{ $item->quantity }}"></td>
+                        <td>AOA {{ number_format($item->price, 2, ',', '.') }}</td>
+                        <td style="width: 40px;">
+                            <form id="updateItemCart" enctype="multipart/form-data" {{-- Actualizar --}}
+                                action="{{ route('site.updadeCart', $item->id) }}" method="post">
+                                @csrf
+                                <input style="font-weight:900;" class="center white" type="number" min="1"
+                                    name="quantity" value="{{ $item->quantity }}">
+                            </form>
+                        </td>
                         <td>{{ $item->getSubTotal }}</td>
                         <td>
-                            <button class="btn-floating waves-effect waves-light green"><i
+                            <button form="updateItemCart" class="btn-floating waves-effect waves-light green"><i
                                     class="material-icons">refresh</i></button>
+
                         </td>
                         <td>
-                            <form action="{{ route('site.remCart') }}" method="post">
+                            {{-- Remover --}}
+                            <form enctype="multipart/form-data" action="{{ route('site.remCart') }}" method="post">
                                 @csrf
                                 <input type="hidden" name="id" value="{{ $item->id }}">
                                 <button class="btn-floating waves-effect waves-light red"><i
@@ -63,8 +82,8 @@
             <div class="col m4"> <button class="btn waves-effect waves-light blue">Continuar<i
                         class="material-icons right">arrow_back</i></button>
             </div>
-            <div class="col m4"> <button class="btn waves-effect waves-light red">Limpar<i
-                        class="material-icons right">clear</i></button>
+            <div class="col m4"> <a href="{{ route('site.clearCart') }}" class="btn waves-effect waves-light red">Limpar<i
+                        class="material-icons right">clear</i></a>
             </div>
             <div class="col m4"> <button class="btn waves-effect waves-light green">Finalizar Pedido<i
                         class="material-icons right">check</i></button>
