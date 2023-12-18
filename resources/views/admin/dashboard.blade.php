@@ -1,1 +1,8 @@
-<h1>Dashboard {{ auth()->user()->name }}</h1>
+@extends('site.layout')
+@section('title', 'A-Loja')
+@section('content')
+    <div class="row container">
+        
+        
+    </div>
+@endsection
