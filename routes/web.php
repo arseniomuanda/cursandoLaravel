@@ -33,8 +33,8 @@ Route::post('/cart/update/{id}', [CartController::class, 'updateQuantity'])->nam
 Route::post('cart', [CartController::class, 'addItem'])->name('site.addCart');
 Route::post('/cart/remove', [CartController::class, 'remItem'])->name('site.remCart');
 
-Route::view('/login', 'login.index')->name('login.index');
+Route::view('/login', 'login.index')->name('login');
 Route::post('/auth', [LoginController::class, 'auth'])->name('login.auth');
 Route::get('/logout', [LoginController::class, 'logout'])->name('user.logout');
 
-Route::get('/admin/dashboard', [BashBoardController::class, 'index'])->name('admin.dashboard');
+Route::get('/admin/dashboard', [BashBoardController::class, 'index'])->name('admin.dashboard')->middleware('auth');

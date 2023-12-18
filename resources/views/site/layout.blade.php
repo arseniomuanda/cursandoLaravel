@@ -43,7 +43,7 @@
                         </ul>
                     </li>
                 @else
-                    <li><a href="{{ route('login.index') }}">Sing In <i class="material-icons right">lock</i></a></li>
+                    <li><a href="{{ route('login') }}">Sing In <i class="material-icons right">lock</i></a></li>
                 @endauth
             </ul>
 
