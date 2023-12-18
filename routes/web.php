@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProdutoController;
 use App\Http\Controllers\SiteController;
@@ -31,3 +32,5 @@ Route::post('/cart/update/{id}', [CartController::class, 'updateQuantity'])->nam
 Route::post('cart', [CartController::class, 'addItem'])->name('site.addCart');
 Route::post('/cart/remove', [CartController::class, 'remItem'])->name('site.remCart');
 
+Route::view('/login', 'login.index')->name('login.index');
+Route::post('/auth', [LoginController::class, 'auth'])->name('login.auth');
