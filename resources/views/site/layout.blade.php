@@ -28,8 +28,26 @@
 
                     </ul>
                 </li>
-                <li><a href="{{ route('site.cart') }}">Carrinho <span class="new badge orange" data-badge-caption>{{ \Cart::getContent()->count() }}</span></a></li>
+                <li><a href="{{ route('site.cart') }}">Carrinho <span class="new badge orange"
+                            data-badge-caption>{{ \Cart::getContent()->count() }}</span></a></li>
             </ul>
+
+            <ul id="nav-mobile" class="right">
+                @auth
+                    <li><a class='dropdown-trigger' href="" data-target='dw-user-option'>Olá
+                            {{ auth()->user()->name }} <i class="material-icons right">expand_more</i></a>
+                        <!-- Dropdown Structure -->
+                        <ul id='dw-user-option' class='dropdown-content'>
+                            <li><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
+                            <li><a href="{{ route('user.logout') }}">Logout</a></li>
+                        </ul>
+                    </li>
+                @else
+                    <li><a href="{{ route('login') }}">Sing In <i class="material-icons right">lock</i></a></li>
+                @endauth
+            </ul>
+
+
         </div>
     </nav>
     @yield('content')
