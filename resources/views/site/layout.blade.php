@@ -14,7 +14,7 @@
 <body>
     <nav class="red">
         <div class="nav-wrapper container">
-            <a href="#" class="brand-logo center">Cruso de Laravel</a>
+            <a href="#" class="brand-logo center">A-loja</a>
             <ul id="nav-mobile" class="left">
                 <li><a href="{{ route('site.index') }}">Home</a></li>
                 <!-- Dropdown Trigger -->

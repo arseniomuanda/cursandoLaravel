@@ -9,7 +9,7 @@ class CartController extends Controller
 {
     public function cartList()
     {
-        $items = \Cart::getContent();
+        $items = \Cart::getContent()->sort();
 
         return view('site.cart', compact('items'));
     }
@@ -40,5 +40,34 @@ class CartController extends Controller
 
             return redirect()->route('site.cart')->with('success', 'Carrinho actualizado!');
         }
+    }
+
+    public function remItem(Request $request)
+    {
+        \Cart::remove($request->id);
+        return redirect()->route('site.cart')->with('success', 'Carrinho actualizado!');
+    }
+
+    public function updateQuantity($id, Request $request)
+    {
+        $validated = $request->validate([
+            'quantity' => 'required|numeric',
+        ]);
+
+        if ($validated) {
+            \Cart::update($id, array(
+                'quantity' => array(
+                    'relative' => false,
+                    'value' => $request->quantity
+                )
+            ));
+        }
+        return redirect()->route('site.cart')->with('success', 'Carrinho actualizado!');
+    }
+
+    public function clearCart()
+    {
+        \Cart::clear();
+        return redirect()->route('site.cart')->with('info', 'Carrinho esvaziado.')->with('subjet', 'Certo!');
     }
 }

@@ -24,4 +24,10 @@ Route::get('/product/{id}', [SiteController::class, 'details'])->name('site.deta
 Route::get('/category/{id}', [SiteController::class, 'category'])->name('site.category');
 
 Route::get('cart', [CartController::class, 'cartList'])->name('site.cart');
+Route::get('/cart/clear', [CartController::class, 'clearCart'])->name('site.clearCart');
+
+
+Route::post('/cart/update/{id}', [CartController::class, 'updateQuantity'])->name('site.updadeCart');
 Route::post('cart', [CartController::class, 'addItem'])->name('site.addCart');
+Route::post('/cart/remove', [CartController::class, 'remItem'])->name('site.remCart');
+

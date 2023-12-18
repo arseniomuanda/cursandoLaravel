@@ -1,5 +1,5 @@
 @extends('site.layout')
-@section('title', "$category->name")
+@section('title', "A-Loja - $category->name")
 @section('content')
     <div class="row container">
         <h4>Categoria: {{ Str::ucfirst($category->name) }}</h4>
