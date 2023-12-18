@@ -33,7 +33,7 @@
             </ul>
 
             <ul id="nav-mobile" class="right">
-                @if (auth()->check())
+                @auth
                     <li><a class='dropdown-trigger' href="" data-target='dw-user-option'>Olá
                             {{ auth()->user()->name }} <i class="material-icons right">expand_more</i></a>
                         <!-- Dropdown Structure -->
@@ -43,8 +43,8 @@
                         </ul>
                     </li>
                 @else
-                    <li><a href="{{ route('login.index') }}">Sing In</a></li>
-                @endif
+                    <li><a href="{{ route('login.index') }}">Sing In <i class="material-icons right">lock</i></a></li>
+                @endauth
             </ul>
 
 
