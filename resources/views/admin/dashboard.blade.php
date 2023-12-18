@@ -1,0 +1,1 @@
+<h1>Dashboard {{ auth()->user()->name }}</h1>

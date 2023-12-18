@@ -24,7 +24,7 @@ class LoginController extends Controller
 
         if (Auth::attempt($data)) {
             $request->session()->regenerate();
-            return redirect()->intended('/');
+            return redirect()->intended('/admin/dashboard');
         } else {
             return redirect()->back()->with('error', 'Usuario não encontrado!');
         }

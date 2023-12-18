@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BashBoardController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
@@ -34,3 +35,5 @@ Route::post('/cart/remove', [CartController::class, 'remItem'])->name('site.remC
 
 Route::view('/login', 'login.index')->name('login.index');
 Route::post('/auth', [LoginController::class, 'auth'])->name('login.auth');
+
+Route::get('/admin/dashboard', [BashBoardController::class, 'index'])->name('admin.dashboard');
