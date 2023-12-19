@@ -1,5 +1,5 @@
 @if ($message = Session::get('error'))
-    <div class="card green">
+    <div class="card red">
         <div class="card-content white-text">
             <span class="card-title">Error!</span>
             <p>{{ $message }}</p>

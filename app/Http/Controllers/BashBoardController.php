@@ -10,6 +10,8 @@ class BashBoardController extends Controller
     {
         //Tambem podemos usar uma lista de metodos dentro do only ou usar o except
         $this->middleware('auth')->only('index');
+
+        $this->middleware('checkemail');
     }
     public function index()
     {
