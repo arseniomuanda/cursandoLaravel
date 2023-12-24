@@ -6,6 +6,7 @@ use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProdutoController;
 use App\Http\Controllers\SiteController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,7 +35,12 @@ Route::post('cart', [CartController::class, 'addItem'])->name('site.addCart');
 Route::post('/cart/remove', [CartController::class, 'remItem'])->name('site.remCart');
 
 Route::view('/login', 'login.index')->name('login');
+Route::view('/resiter', 'login.register')->name('register');
+
+
 Route::post('/auth', [LoginController::class, 'auth'])->name('login.auth');
 Route::get('/logout', [LoginController::class, 'logout'])->name('user.logout');
 
 Route::get('/admin/dashboard', [BashBoardController::class, 'index'])->name('admin.dashboard');
+
+Route::post('user/store', [UserController::class, 'store'])
