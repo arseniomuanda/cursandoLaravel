@@ -47,7 +47,7 @@
                                 <input class='validate' type='password' name='password' id='password' />
                                 <label for='password' data-error="Campo obrigatório">Enter your password</label>
                             </div>
-                            <label style='float: left;'>
+                             <label style='float: left;'>
                                 <a class='green-text' href='{{ route('register') }}'><b>Registar-se!</b></a>
                             </label>
                             <label style='float: right;'>
