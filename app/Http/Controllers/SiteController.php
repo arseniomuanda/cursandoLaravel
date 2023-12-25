@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Produto;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class SiteController extends Controller
 {
@@ -20,6 +22,17 @@ class SiteController extends Controller
     public function details($id)
     {
         $product = Produto::where('id', $id)->first();
+        //Gate::authorize('ver-produto', $product);
+        //$this->authorize('verProduto', $product);
+
+        /* Gate::allowIf(function(User $user){
+            return $user->isAdmin();
+        }); */
+
+        //if(Gate::allows())
+        //if(Gate::denies())
+        /* Podemos usar o segninte*/
+        
         return view('site.details', compact('product'));
     }
 
@@ -29,5 +42,4 @@ class SiteController extends Controller
         $category = Category::find($id);
         return view('site.categoria', compact('products', 'category'));
     }
-
 }

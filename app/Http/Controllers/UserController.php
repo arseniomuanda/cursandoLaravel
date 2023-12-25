@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -31,12 +33,18 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            'name' => ['required', 'm'],
-            'whatsapp',
-            'email',
-            'password',
-            'confirm_password'
+            'name' => ['required', 'string', 'min:3', 'max:255'],
+            'whatsapp' => ['required', 'string', 'min:9', 'max:9'],
+            'email' => ['required', 'email', 'min:3', 'max:255', 'unique:users'],
+            'password'=> ['required', 'string', 'min:4', 'confirmed'],
+            'password_confirmation'
         ]);
+
+        $data['password'] = bcrypt($request->password);
+        $user = User::create($data);
+        Auth::login($user);
+
+        return redirect(route('admin.dashboard'));
     }
 
     /**

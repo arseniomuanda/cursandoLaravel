@@ -20,7 +20,7 @@
                 <div class="z-depth-1 grey lighten-4 row"
                     style="display: inline-block; padding: 32px 48px 0px 48px; border: 1px solid #EEE;">
 
-                    <form class="col s12" action="{{ route('user.store') }}" method="POST">
+                    <form class="col s12" action="{{ route('users.store') }}" method="POST">
                         @csrf
                         <div class='row'>
                             <div class='col s12'>
@@ -35,7 +35,8 @@
                         </div>
                         <div class='row'>
                             <div class='input-field col s12'>
-                                <input class='validate' type='text' name='whatsapp' maxlength="9" pattern="^\9\s\d{8}$" title="Por favor, insira um número de telefone válido angolano" id='whatsapp' />
+                                <input class='validate' type='text' name='whatsapp' maxlength="9" pattern="^\9\s\d{8}$"
+                                    title="Por favor, insira um número de telefone válido angolano" id='whatsapp' />
                                 <label for='whatsapp' data-error="Telefone inválido!">Telefone</label>
                             </div>
                         </div>
@@ -55,7 +56,7 @@
                         </div>
                         <div class='row'>
                             <div class='input-field col s12'>
-                                <input class='validate' type='password' name='confirm_password' id='password' />
+                                <input class='validate' type='password' name='password_confirmation' id='password' />
                                 <label for='password' data-error="Campo obrigatório">Confirmar password</label>
                             </div>
                             <label style='float: right;'>
@@ -83,8 +84,7 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"></script>
 <script>
-  $(document).ready(function() {
-    $('#whatsapp').mask('+244 999999999');
-  });
+    $(document).ready(function() {
+        $('#whatsapp').mask('+244 999999999');
+    });
 </script>
-
