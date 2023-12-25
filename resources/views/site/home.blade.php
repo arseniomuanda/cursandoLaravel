@@ -7,6 +7,8 @@
                 <div class="card">
                     <div class="card-image">
                         <img src="{{ $product->image }}">
+                        
+                        {{-- Existe ainda o cannot --}}
                         @can('ver-produto', $product)
                             <a href="{{ route('site.details', $product->id) }}"
                                 class="btn-floating halfway-fab waves-effect waves-light red"><i
