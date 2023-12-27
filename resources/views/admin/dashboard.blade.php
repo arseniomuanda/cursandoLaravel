@@ -70,15 +70,15 @@
     <div class="row container ">
         <section class="graficos col s12 m6">
             <div class="grafico card z-depth-4">
-                <h5 class="center"> Aquisição de usuários</h5>
-                <canvas id="myChart" width="400" height="200"></canvas>
+                <h5 class="center"> {{ $userLabel }}</h5>
+                <canvas id="usersChart" width="400" height="200"></canvas>
             </div>
         </section>
 
         <section class="graficos col s12 m6">
             <div class="grafico card z-depth-4">
-                <h5 class="center"> Produtos </h5>
-                <canvas id="myChart2" width="400" height="200"></canvas>
+                <h5 class="center"> {{ $productLabel }}</h5>
+                <canvas id="productoChart" width="400" height="200"></canvas>
             </div>
         </section>
     </div>
@@ -87,16 +87,14 @@
 @push('graficos')
     <script>
         /* Gráfico 01 */
-        var ctx = document.getElementById('myChart');
+        var ctx = document.getElementById('usersChart');
         var myChart = new Chart(ctx, {
             type: 'line',
             data: {
-                labels: ['Janeiro', 'Feveiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro',
-                    'Outubro', 'Novembro', 'Dezembro'
-                ],
+                labels: [{!! $userMes !!}],
                 datasets: [{
-                    label: '2020',
-                    data: [12, 19, 3, 5],
+                    label: {{ date('Y') }},
+                    data: [{{ $userTotals }}],
                     backgroundColor: [
                         'rgba(255, 99, 132, 1)',
                         'rgba(54, 162, 235, 1)',
@@ -110,7 +108,7 @@
                         'rgba(255, 159, 64, 1)'
                     ],
                     borderWidth: 1,
-                }]
+                }],
             },
             options: {
                 scales: {
@@ -124,19 +122,16 @@
         });
 
         /* Gráfico 02 */
-        var ctx = document.getElementById('myChart2');
+        var ctx = document.getElementById('productoChart');
         var myChart = new Chart(ctx, {
             type: 'pie',
             data: {
-                labels: ['Facebook', 'Google', 'Instagram'],
+                labels: [{!! $productCat !!}],
                 datasets: [{
-                    label: 'Visitas',
-                    data: [12, 19, 3],
-                    backgroundColor: [
-                        'rgba(255, 99, 132)',
-                        'rgba(54, 162, 235)',
-                        'rgba(255, 159, 64)'
-                    ]
+                    label: 'Valores',
+                    data: [{{ $productTotals }}],
+                    /* para ele gerar as cores automaticamente */
+                    backgroundColor: myChart.getDatasetMeta(0).controller.getStyle().backgroundColor
                 }]
             }
         });

@@ -18,7 +18,7 @@ class BashBoardController extends Controller
     {
         $users = User::all()->count();
         $productsData = Produto::select(
-            'categories.name AS category',
+            DB::raw('categories.name as category'),
             DB::raw('COUNT(*) as total')
         )
             ->join('categories', 'produtos.cat', '=', 'categories.id')
@@ -27,29 +27,73 @@ class BashBoardController extends Controller
 
 
         foreach ($productsData as $value) {
-            $productLabals[] = $value->category;
+            $productCat[] = "'" . ucfirst($value->category) . "'";
             $productTotals[] = $value->total;
         }
 
         $usersData = User::select(
-            DB::raw('MONTH(created_at) as month'),
-            DB::raw('COUNT(*) as total')
-        )->groupBy('month')
-            ->orderBy('month', 'asc')->where('YEAR(created_at)', date('Y'))->get();
+            DB::raw('MONTH(created_at) AS month'),
+            DB::raw('COUNT(*) AS total'))
+        ->groupBy('month')
+            ->orderBy('month', 'asc')
+            ->whereYear('created_at', date('Y'))
+            ->get();
 
         foreach ($usersData as $value) {
-            $userLabels[] = $value->category;
+
+            switch ($value->month) {
+                case '1':
+                    $userMes[] = "'Janeiro'";
+                    break;
+                case '2':
+                    $userMes[] = "'Fevereiro'";
+                    break;
+                case '3':
+                    $userMes[] = "'Março'";
+                    break;
+                case '4':
+                    $userMes[] = "'Abril'";
+                    break;
+                case '5':
+                    $userMes[] = "'Maio'";
+                    break;
+                case '6':
+                    $userMes[] = "'Junho'";
+                    break;
+                case '7':
+                    $userMes[] = "'Julho'";
+                    break;
+                case '8':
+                    $userMes[] = "'Agosto'";
+                    break;
+                case '9':
+                    $userMes[] = "'Setembro'";
+                    break;
+                case '10':
+                    $userMes[] = "'Outubro'";
+                    break;
+                case '11':
+                    $userMes[] = "'Novembro'";
+                    break;
+                case '12':
+                    $userMes[] = "'Dezembro'";
+                    break;
+                default:
+                    # code...
+                    break;
+            }
             $userTotals[] = $value->total;
         }
 
         #processa as variaveis convertendo em string
-        $productLabals = implode(',', $productLabals);
+        $productLabel = 'Categoria de produtos';
+        $productCat = implode(',', $productCat);
         $productTotals = implode(',',  $productTotals);
 
         $userLabel = 'Aquisição de utilizadores do ano de ' . date('Y');
-        $userLabels = implode(',', $userLabels);
+        $userMes = implode(',', $userMes);
         $userTotals = implode(',',  $userTotals);
 
-        return view('admin.dashboard', compact('users', 'productsLabals'));
+        return view('admin.dashboard', compact('users', 'productCat', 'productTotals', 'productLabel', 'userLabel', 'userMes', 'userTotals'));
     }
 }
