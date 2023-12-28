@@ -102,7 +102,8 @@ class BashBoardController extends Controller
 
     public function products()
     {
-        $products = Produto::where('user', auth()->id())->paginate(3);
-        return view('admin.products', compact('products'));
+        $products = Produto::where('user', auth()->id())->paginate(5);
+        $count = Produto::where('user', auth()->id())->get()->count();
+        return view('admin.products', compact('products', 'count'));
     }
 }

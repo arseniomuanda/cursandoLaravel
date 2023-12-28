@@ -9,15 +9,11 @@
 
 
     @include('components.admin.create')
-    @include('components.admin.edit', ['product' => 4])
-    @include('components.admin.delete', ['product' => 4])
-
-
 
     <div class="row container crud">
         <div class="row titulo ">
             <h1 class="left">Produtos</h1>
-            <span class="right chip">234 produtos cadastrados</span>
+            <span class="right chip">{{ $count }} produtos cadastrados</span>
         </div>
 
         <nav class="bg-gradient-blue">
@@ -54,10 +50,12 @@
                             <td>AOA {{ number_format($item->price, '2', ',', '.') }}</td>
                             <td>{{ Str::ucfirst($item->getCategory->name) }}</td>
                             <td><a class="btn-floating  waves-effect waves-light orange modal-trigger"
-                                    href="#editProduct"><i class="material-icons">mode_edit</i></a>
-                                <a class="btn-floating  waves-effect waves-light red modal-trigger" href="#deleteProduct"><i
+                                    href="#edit-{{ $item->id }}"><i class="material-icons">mode_edit</i></a>
+                                <a class="btn-floating  waves-effect waves-light red modal-trigger" href="#delete-{{ $item->id }}"><i
                                         class="material-icons">delete</i></a>
                             </td>
+                            @include('components.admin.edit', ['product' => $item])
+                            @include('components.admin.delete', ['product' => $item])
                         </tr>
                     @endforeach
                 </tbody>
