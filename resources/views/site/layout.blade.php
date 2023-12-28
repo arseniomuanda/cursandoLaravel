@@ -14,7 +14,8 @@
 <body>
     <nav class="red">
         <div class="nav-wrapper container">
-            <a href="#" class="brand-logo center">A-loja</a>
+            <a class="center brand-logo " href="{{ route('site.index') }}"><img src="{{ asset('img/logo.png') }}"
+                    height="60px"></a>
             <ul id="nav-mobile" class="left">
                 <li><a href="{{ route('site.index') }}">Home</a></li>
                 <!-- Dropdown Trigger -->

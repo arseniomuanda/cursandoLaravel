@@ -47,7 +47,11 @@
                                 <input class='validate' type='password' name='password' id='password' />
                                 <label for='password' data-error="Campo obrigatório">Enter your password</label>
                             </div>
-                             <label style='float: left;'>
+                            <input type="checkbox" name="remember" id="remember">
+                            <label style='float: left;' for="remember" class='green-text'>Lembrar-me!</label>
+                        </div>
+                        <div class="row">
+                            <label style='float: left;'>
                                 <a class='green-text' href='{{ route('register') }}'><b>Registar-se!</b></a>
                             </label>
                             <label style='float: right;'>
