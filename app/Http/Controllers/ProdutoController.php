@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Produto;
 use Illuminate\Http\Request;
+use Symfony\Contracts\Service\Attribute\Required;
 
 class ProdutoController extends Controller
 {
@@ -35,7 +36,15 @@ class ProdutoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'name' => ['required', 'min:3', 'max:200'],
+            'price' => ['required'],
+            'cat' => ['numeric'],
+            'qtd' => ['numeric']
+        ]);
+        $data['user'] = auth()->id();
+        Produto::create($data);
+        return redirect(route('admin.products'));
     }
 
     /**

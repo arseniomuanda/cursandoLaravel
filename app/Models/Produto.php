@@ -19,4 +19,6 @@ class Produto extends Model
     {
         return $this->belongsTo(Category::class, 'cat');
     }
+
+    protected $fillable = ['name','user','price','description','image','cat','qtd'];
 }

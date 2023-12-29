@@ -8,7 +8,12 @@
     </div>
 
 
-    @include('components.admin.create')
+    @include('components.admin.products.create')
+    @if ($errors->any())
+        @foreach ($errors->all() as $error)
+            {{ $error }} <br>
+        @endforeach
+    @endif
 
     <div class="row container crud">
         <div class="row titulo ">
@@ -51,11 +56,11 @@
                             <td>{{ Str::ucfirst($item->getCategory->name) }}</td>
                             <td><a class="btn-floating  waves-effect waves-light orange modal-trigger"
                                     href="#edit-{{ $item->id }}"><i class="material-icons">mode_edit</i></a>
-                                <a class="btn-floating  waves-effect waves-light red modal-trigger" href="#delete-{{ $item->id }}"><i
-                                        class="material-icons">delete</i></a>
+                                <a class="btn-floating  waves-effect waves-light red modal-trigger"
+                                    href="#delete-{{ $item->id }}"><i class="material-icons">delete</i></a>
                             </td>
-                            @include('components.admin.edit', ['product' => $item])
-                            @include('components.admin.delete', ['product' => $item])
+                            @include('components.admin.products.edit', ['product' => $item])
+                            @include('components.admin.products.delete', ['product' => $item])
                         </tr>
                     @endforeach
                 </tbody>
