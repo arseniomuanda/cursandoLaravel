@@ -7,8 +7,8 @@
             @csrf
             <div class="row">
                 <div class="input-field col s6">
-                    <input placeholder="Placeholder" id="name" name="name" required data-error="Campo obrigatório"
-                        type="text" class="validate">
+                    <input placeholder="Placeholder" id="name" name="name" required
+                        data-error="Campo obrigatório" type="text" class="validate">
                     <label for="name">Nome</label>
                 </div>
 
@@ -52,7 +52,6 @@
 
             </div>
             <button type="submit" class="waves-effect waves-green btn blue right">Cadastrar</button> <br>
+        </form>
     </div>
-
-    </form>
 </div>
