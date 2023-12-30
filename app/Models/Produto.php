@@ -11,7 +11,8 @@ class Produto extends Model
 
     protected $table = 'produtos';
 
-    public function getUser(){
+    public function getUser()
+    {
         return $this->belongsTo(User::class, 'user');
     }
 
@@ -20,5 +21,5 @@ class Produto extends Model
         return $this->belongsTo(Category::class, 'cat');
     }
 
-    protected $fillable = ['name','user','price','description','image','cat','qtd'];
+    protected $fillable = ['name', 'slug', 'user', 'price', 'description', 'image', 'cat', 'qtd'];
 }

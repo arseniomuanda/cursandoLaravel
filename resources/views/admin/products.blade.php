@@ -34,6 +34,10 @@
         </nav>
 
         <div class="card z-depth-4 registros">
+            @if ($message = Session::get('success'))
+                @include('components.messages.success', ['message' => $message])
+            @endif
+
             <table class="striped ">
                 <thead>
                     <tr>

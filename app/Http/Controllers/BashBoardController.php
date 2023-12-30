@@ -16,6 +16,7 @@ class BashBoardController extends Controller
         /* $this->middleware(['auth', 'checkemail'])->only('index'); */
         $this->middleware(['auth', 'checkemail']);
     }
+    
     public function index()
     {
         $users = User::all()->count();

@@ -47,7 +47,7 @@
                       </div>
 
                       <div class="input-field col s12">
-                          <textarea id="description" name="description" class="materialize-textarea" data-length="120">{{ $product->name }}</textarea>
+                          <textarea id="description" name="description" required class="materialize-textarea" data-length="120">{{ $product->name }}</textarea>
                           <label for="description">Descrição</label>
                       </div>
 

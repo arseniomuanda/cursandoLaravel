@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Produto;
 use Illuminate\Http\Request;
-use Symfony\Contracts\Service\Attribute\Required;
+use Illuminate\Support\Str;
 
 class ProdutoController extends Controller
 {
@@ -36,15 +36,26 @@ class ProdutoController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->validate([
+        $request->validate([
             'name' => ['required', 'min:3', 'max:200'],
             'price' => ['required'],
             'cat' => ['numeric'],
-            'qtd' => ['numeric']
+            'qtd' => ['numeric'],
+            'image' => ['max:300'],
+            'description' => ['max:800']
         ]);
+
+        $data = $request->all();
+        //salvar imagem usando laravel
+        if ($request->image) {
+            $data['image'] = $request->image->store('products');
+        }
+
         $data['user'] = auth()->id();
+        $data['slug'] = Str::slug($request->name);
+
         Produto::create($data);
-        return redirect(route('admin.products'));
+        return redirect(route('admin.products'))->with('success', 'Producto adicionado com sucesso!');
     }
 
     /**
@@ -68,7 +79,25 @@ class ProdutoController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'name' => ['required', 'min:3', 'max:200'],
+            'price' => ['required'],
+            'cat' => ['numeric'],
+            'qtd' => ['numeric'],
+            'image' => ['max:300'],
+            'description' => ['max:800']
+        ]);
+
+        $data = $request->all();
+        //salvar imagem usando laravel
+        if ($request->image) {
+            $data['image'] = $request->image->store('files/products');
+        }
+
+        $data['user'] = auth()->id();
+
+        Produto::create($data);
+        return redirect(route('admin.products'))->with('success', '');
     }
 
     /**
@@ -78,6 +107,6 @@ class ProdutoController extends Controller
     {
         $product = Produto::find($id);
         $product->delete();
-        return redirect(route('admin.products'));
+        return redirect(route('admin.products'))->with('success', 'Producto deletado com sucesso!');
     }
 }
