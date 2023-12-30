@@ -67,8 +67,7 @@
     <script src="{{ asset('js/chart.js') }}"></script>
     <script src="{{ asset('js/main.js') }}"></script>
     @stack('graficos')
-    <script>
-    </script>
+    <script></script>
 
 </body>
 

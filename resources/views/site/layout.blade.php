@@ -24,7 +24,7 @@
                     <!-- Dropdown Structure -->
                     <ul id='dw-cat' class='dropdown-content'>
                         @foreach ($categoriesMenu as $category)
-                            <li><a href="{{ route('site.category', $category->id) }}">{{ $category->name }}</a></li>
+                            <li><a href="{{ route('site.category', $category->id) }}">{{ Str::ucfirst($category->name) }}</a></li>
                         @endforeach
 
                     </ul>

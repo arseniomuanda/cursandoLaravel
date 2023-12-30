@@ -9,11 +9,11 @@
                         <img src="{{ $product->image }}">
                         
                         {{-- Existe ainda o cannot --}}
-                        @can('ver-produto', $product)
-                            <a href="{{ route('site.details', $product->id) }}"
+                        {{-- @can('ver-produto', $product) --}}
+                            <a href="{{ route('site.details', $product->slug) }}"
                                 class="btn-floating halfway-fab waves-effect waves-light red"><i
                                     class="material-icons">visibility</i></a>
-                        @endcan
+                       {{-- ca@endcan --}}
                     </div>
                     <div class="card-content">
                         <span class="card-title">{{ $product->name }}</span>
