@@ -51,7 +51,7 @@
                         <tr>
                             <td>
                                 <a href="{{ route('site.details', $item->id) }}">
-                                    <img src="{{ $item->attributes->image }}" alt="{{ $item->name }}" width="40"
+                                    <img src="{{ url("storage/{$item->attributes->image}") }}" alt="{{ $item->name }}" width="40"
                                         height="40" class="circle">
                                 </a>
                             </td>

@@ -6,7 +6,7 @@
             <div class="col s12 m4">
                 <div class="card">
                     <div class="card-image">
-                        <img src="{{ $product->image }}">
+                         <img src="{{ url("storage/$product->image") }}">
                         
                         {{-- Existe ainda o cannot --}}
                         {{-- @can('ver-produto', $product) --}}

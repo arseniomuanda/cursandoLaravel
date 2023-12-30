@@ -53,7 +53,8 @@
                 <tbody>
                     @foreach ($products as $item)
                         <tr>
-                            <td><img src="{{ url("storage/$item->image") }}" class="circle "></td>
+                            <td><img src="{{ url("storage/$item->image") }}" class="circle " width="40" height="40">
+                            </td>
                             <td>#{{ $item->id }}</td>
                             <td>{{ $item->name }}</td>
                             <td>AOA {{ number_format($item->price, '2', ',', '.') }}</td>
