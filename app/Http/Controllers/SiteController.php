@@ -22,7 +22,7 @@ class SiteController extends Controller
     public function details($slug)
     {
         $product = Produto::where('slug', $slug)->first();
-        Gate::authorize('ver-produto', $product);
+        //Gate::authorize('ver-produto', $product);
         //$this->authorize('verProduto', $product);
 
         /* Gate::allowIf(function(User $user){
