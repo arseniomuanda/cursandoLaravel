@@ -8,8 +8,8 @@
                   @csrf
                   <div class="row">
                       <div class="input-field col s6">
-                          <input placeholder="Placeholder" value="{{ $product->name }}" id="name" name="name" required
-                              data-error="Campo obrigatório" type="text" class="validate">
+                          <input placeholder="Placeholder" id="name" name="name" required
+                              data-error="Campo obrigatório" value="{{ $product->name }}" type="text" class="validate">
                           <label for="name">Nome</label>
                       </div>
 
@@ -17,21 +17,21 @@
                           <select name="cat" required>
                               <option value="" disabled>Selecionar Categoria</option>
                               @foreach ($categoriesMenu as $category)
-                                  <option {{ $category->id == $product->cat ? 'selected' : '' }} value="{{ $category->id }}">{{ Str::ucfirst($category->name) }}</option>
+                                  <option {{ $product->cat == $category->id ? 'selected' : '' }} value="{{ $category->id }}">{{ Str::ucfirst($category->name) }}</option>
                               @endforeach
                           </select>
                           <label>Materialize Select</label>
                       </div>
 
                       <div class="input-field col s3">
-                          <input id="price" type="number" value="{{ $product->price }}" name="price" min="0" step="0.1" required
-                              data-error="Campo obrígatório" class="validate">
+                          <input id="price" type="number" name="price" min="0" step="0.1" required
+                              data-error="Campo obrígatório" value="{{ $product->price }}" class="validate">
                           <label for="price">Preço</label>
                       </div>
 
 
                       <div class="input-field col s3">
-                          <input id="qtd" type="number" value="{{ $product->qtd }}" name="qtd" min="0" required
+                          <input id="qtd" type="number" name="qtd" value="{{ $product->qtd }}" min="0" required
                               data-error="Campo obrígatório" class="validate">
                           <label for="qtd">Quantidade</label>
                       </div>
@@ -42,17 +42,17 @@
                               <input type="file" name="image">
                           </div>
                           <div class="file-path-wrapper">
-                              <input clasas="file-path validate" type="text" placeholder="Carregar a imagem aqui">
+                              <input class="file-path validate" type="text">
                           </div>
                       </div>
 
                       <div class="input-field col s12">
-                          <textarea id="description" name="description" required class="materialize-textarea" data-length="120">{{ $product->name }}</textarea>
-                          <label for="description">Descrição</label>
+                          <textarea id="description" name="description" class="materialize-textarea" maxlength="800">{{ $product->description }}</textarea>
+                          <label for="textarea2">Descrição</label>
                       </div>
 
                   </div>
-                  <button type="submit" class="waves-effect waves-green btn blue right">Cadastrar</button> <br>
+                  <button type="submit" class="waves-effect waves-green btn green right">Cadastrar</button> <br>
               </form>
           </div>
       </div>

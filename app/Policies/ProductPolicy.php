@@ -17,6 +17,8 @@ class ProductPolicy
 
     public function verProduto(User $user, Produto $produto)
     {
-        return $user->id === $produto->user;
+        $email = auth()->user()->email;
+        $user_name = explode('@', $email)[0];
+        return ($user->id === $produto->user && $user_name === 'admin');
     }
 }
