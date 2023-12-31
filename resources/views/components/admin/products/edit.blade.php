@@ -8,32 +8,35 @@
                   @csrf
                   <div class="row">
                       <div class="input-field col s6">
-                          <input placeholder="Placeholder" id="name" name="name" required
-                              data-error="Campo obrigatório" value="{{ $product->name }}" type="text" class="validate">
-                          <label for="name">Nome</label>
+                          <input placeholder="Placeholder" id="name-{{ $product->id }}" name="name" required
+                              data-error="Campo obrigatório" value="{{ $product->name }}" type="text"
+                              class="validate">
+                          <label for="name-{{ $product->id }}">Nome</label>
                       </div>
 
                       <div class="input-field col s6">
-                          <select name="cat" required>
-                              <option value="" disabled>Selecionar Categoria</option>
+                          <select class="validate" name="cat" id="editCar-{{ $product->id }}" required>
+                              <option disabled>Selecionar Categoria</option>
                               @foreach ($categoriesMenu as $category)
-                                  <option {{ $product->cat == $category->id ? 'selected' : '' }} value="{{ $category->id }}">{{ Str::ucfirst($category->name) }}</option>
+                                  <option value="{{ $category->id }}"
+                                      {{ $product->cat == $category->id ? 'selected' : '' }}>
+                                      {{ Str::ucfirst($category->name) }}</option>
                               @endforeach
                           </select>
-                          <label>Materialize Select</label>
+                          <label for="editCar-{{ $product->id }}">Selecionar Categoria</label>
                       </div>
 
                       <div class="input-field col s3">
-                          <input id="price" type="number" name="price" min="0" step="0.1" required
+                          <input id="price-{{ $product->id }}" type="number" name="price" min="0" step="0.1" required
                               data-error="Campo obrígatório" value="{{ $product->price }}" class="validate">
-                          <label for="price">Preço</label>
+                          <label for="price-{{ $product->id }}">Preço</label>
                       </div>
 
 
                       <div class="input-field col s3">
-                          <input id="qtd" type="number" name="qtd" value="{{ $product->qtd }}" min="0" required
-                              data-error="Campo obrígatório" class="validate">
-                          <label for="qtd">Quantidade</label>
+                          <input id="qtd-{{ $product->id }}" type="number" name="qtd" value="{{ $product->qtd }}" min="0"
+                              required data-error="Campo obrígatório" class="validate">
+                          <label for="qtd-{{ $product->id }}">Quantidade</label>
                       </div>
 
                       <div class="file-field input-field col s6">
@@ -47,12 +50,22 @@
                       </div>
 
                       <div class="input-field col s12">
-                          <textarea id="description" name="description" class="materialize-textarea" maxlength="800">{{ $product->description }}</textarea>
-                          <label for="textarea2">Descrição</label>
+                          <textarea id="description-{{ $product->id }}" name="description" class="materialize-textarea" maxlength="800">{{ $product->description }}</textarea>
+                          <label for="description-{{ $product->id }}">Descrição</label>
                       </div>
 
                   </div>
-                  <button type="submit" class="waves-effect waves-green btn green right">Cadastrar</button> <br>
+                  <button type="submit" class="waves-effect waves-green btn green right">Salvar</button> <br>
               </form>
           </div>
       </div>
+
+      <script>
+          document.addEventListener('DOMContentLoaded', function() {
+              var selects = document.querySelectorAll('select');
+              selects.forEach(function(select) {
+                  // Inicialize o select
+                  M.FormSelect.init(select);
+              });
+          });
+      </script>
