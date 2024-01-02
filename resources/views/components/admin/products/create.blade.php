@@ -18,7 +18,7 @@
                             <option value="{{ $category->id }}">{{ Str::ucfirst($category->name) }}</option>
                         @endforeach
                     </select>
-                    <label>Materialize Select</label>
+                    <label>Selecionar Categoria</label>
                 </div>
 
                 <div class="input-field col s3">
@@ -46,7 +46,7 @@
 
                 <div class="input-field col s12">
                     <textarea id="description" name="description" class="materialize-textarea" maxlength="800"></textarea>
-                    <label for="textarea2">Descrição</label>
+                    <label for="description">Descrição</label>
                 </div>
 
             </div>

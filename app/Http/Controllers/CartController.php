@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cart;
 use App\Models\Produto;
 use Illuminate\Http\Request;
 
@@ -9,9 +10,23 @@ class CartController extends Controller
 {
     public function cartList()
     {
-        $items = \Cart::getContent()->sort();
+        $items = \Cart::session(auth()->id())->getContent()->sort();
 
         return view('site.cart', compact('items'));
+    }
+
+    public function salvarCarrinhoDB()
+    {
+        $items = \Cart::session(auth()->id())->getContent();
+        foreach ($items as $item) {
+            $carrinho = new Cart();
+            $carrinho->user_id = auth()->id();
+            $carrinho->produto_id = $item->id;
+            $carrinho->quantidade = $item->quantity;
+            $carrinho->save();
+        }
+        \Cart::session(auth()->id())->clear();
+        return redirect()->back()->with('success', 'Carrinho salvo com sucesso!');
     }
 
     public function addItem(Request $request)
@@ -27,7 +42,7 @@ class CartController extends Controller
         ]);
 
         if ($validated) {
-            \Cart::add(array(
+            \Cart::session(auth()->id())->add(array(
                 'id' => $request->id,
                 'name' =>  $request->name,
                 'price' =>  $request->price,
@@ -35,7 +50,7 @@ class CartController extends Controller
                 'attributes' => array(
                     'image' => $request->image
                 ),
-                //'associatedModel' => 'Produto'
+                'associatedModel' => $product
             ));
 
             return redirect()->route('site.cart')->with('success', 'Carrinho actualizado!');
@@ -44,7 +59,7 @@ class CartController extends Controller
 
     public function remItem(Request $request)
     {
-        \Cart::remove($request->id);
+        \Cart::session(auth()->id())->remove($request->id);
         return redirect()->route('site.cart')->with('success', 'Carrinho actualizado!');
     }
 
@@ -55,7 +70,7 @@ class CartController extends Controller
         ]);
 
         if ($validated) {
-            \Cart::update($id, array(
+            \Cart::session(auth()->id())->update($id, array(
                 'quantity' => array(
                     'relative' => false,
                     'value' => $request->quantity
@@ -67,7 +82,7 @@ class CartController extends Controller
 
     public function clearCart()
     {
-        \Cart::clear();
+        \Cart::session(auth()->id())->clear();
         return redirect()->route('site.cart')->with('info', 'Carrinho esvaziado.')->with('subjet', 'Certo!');
     }
 }
