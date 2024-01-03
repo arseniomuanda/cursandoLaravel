@@ -15,7 +15,8 @@
                       </div>
 
                       <div class="input-field col s6">
-                          <select class="validate" name="cat" id="editCar-{{ $product->id }}" required>
+                          <select class="validate {{-- browser-default --}}" name="cat" id="editCar-{{ $product->id }}"
+                              required>
                               <option disabled>Selecionar Categoria</option>
                               @foreach ($categoriesMenu as $category)
                                   <option value="{{ $category->id }}"
@@ -26,16 +27,28 @@
                           <label for="editCar-{{ $product->id }}">Selecionar Categoria</label>
                       </div>
 
+                      <div class="input-field col s6">
+                          <select name="cat" required>
+                              <option value="" disabled selected>Selecionar Categoria</option>
+                              @foreach ($categoriesMenu as $category)
+                                  <option value="{{ $category->id }}">{{ Str::ucfirst($category->name) }}</option>
+                              @endforeach
+                          </select>
+                          <label>Selecionar Categoria</label>
+                      </div>
+
                       <div class="input-field col s3">
-                          <input id="price-{{ $product->id }}" type="number" name="price" min="0" step="0.1" required
-                              data-error="Campo obrígatório" value="{{ $product->price }}" class="validate">
+                          <input id="price-{{ $product->id }}" type="number" name="price" min="0"
+                              step="0.1" required data-error="Campo obrígatório" value="{{ $product->price }}"
+                              class="validate">
                           <label for="price-{{ $product->id }}">Preço</label>
                       </div>
 
 
                       <div class="input-field col s3">
-                          <input id="qtd-{{ $product->id }}" type="number" name="qtd" value="{{ $product->qtd }}" min="0"
-                              required data-error="Campo obrígatório" class="validate">
+                          <input id="qtd-{{ $product->id }}" type="number" name="qtd"
+                              value="{{ $product->qtd }}" min="0" required data-error="Campo obrígatório"
+                              class="validate">
                           <label for="qtd-{{ $product->id }}">Quantidade</label>
                       </div>
 

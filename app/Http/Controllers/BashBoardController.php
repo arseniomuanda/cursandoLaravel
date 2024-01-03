@@ -37,12 +37,14 @@ class BashBoardController extends Controller
 
         $usersData = User::select(
             DB::raw('MONTH(created_at) AS month'),
-            DB::raw('COUNT(*) AS total'))
-        ->groupBy('month')
+            DB::raw('COUNT(*) AS total')
+        )
+            ->groupBy('month')
             ->orderBy('month', 'asc')
             ->whereYear('created_at', date('Y'))
             ->get();
-
+        $userMes = [];
+        $userTotals = [];
         foreach ($usersData as $value) {
 
             switch ($value->month) {

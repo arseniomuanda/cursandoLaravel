@@ -22,6 +22,9 @@ class SiteController extends Controller
     public function details($slug)
     {
         $product = Produto::where('slug', $slug)->first();
+        if (is_null($product)) {
+            $product = Produto::where('id', $slug)->first();
+        }
         //Gate::authorize('ver-produto', $product);
         //$this->authorize('verProduto', $product);
 
@@ -32,7 +35,7 @@ class SiteController extends Controller
         //if(Gate::allows())
         //if(Gate::denies())
         /* Podemos usar o segninte*/
-        
+
         return view('site.details', compact('product'));
     }
 
