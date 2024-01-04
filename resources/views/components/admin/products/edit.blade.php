@@ -28,29 +28,23 @@
                           <label for="qtd-{{ $product->id }}">Quantidade</label>
                       </div>
 
-                      <div class="file-field input-field col s12">
-                          <div class="btn">
-                              <span>Imagem</span>
-                              <input type="file" name="image">
-                          </div>
-                          <div class="file-path-wrapper">
-                              <input class="file-path validate" type="text">
-                          </div>
-                      </div>
-
-
                       <div class="input-field col s6">
-                        
-                          <label>Selecionar Marca</label>
-                          <select class="validate browser-default" name="cat" id="editCar-{{ $product->id }}"
-                              required>
-                              <option disabled>Selecionar Marca</option>
-                              @foreach ($brandsMenu as $brand)
-                                  <option value="{{ $brand->id }}"
-                                      {{ $product->brand == $brand->id ? 'selected' : '' }}>
-                                      {{ Str::ucfirst($brand->name) }}</option>
-                              @endforeach
-                          </select>
+                          <div class="row">
+                              <div class="col s3">
+                                  <label>Selecionar Marca</label>
+                              </div>
+                              <div class="col s9">
+                                  <select class="validate browser-default" name="cat"
+                                      id="editCar-{{ $product->id }}" required>
+                                      <option disabled>Selecionar Marca</option>
+                                      @foreach ($brandsMenu as $brand)
+                                          <option value="{{ $brand->id }}"
+                                              {{ $product->brand == $brand->id ? 'selected' : '' }}>
+                                              {{ Str::ucfirst($brand->name) }}</option>
+                                      @endforeach
+                                  </select>
+                              </div>
+                          </div>
                       </div>
 
                       <div class="input-field col s6">
@@ -67,6 +61,16 @@
                                       @endforeach
                                   </select>
                               </div>
+                          </div>
+                      </div>
+
+                      <div class="file-field input-field col s12">
+                          <div class="btn">
+                              <span>Imagem</span>
+                              <input type="file" name="image">
+                          </div>
+                          <div class="file-path-wrapper">
+                              <input class="file-path validate" type="text">
                           </div>
                       </div>
 
