@@ -14,8 +14,8 @@
                           <label for="name-{{ $product->id }}">Nome</label>
                       </div>
 
-                      <div class="input-field col s6">
-                          <select class="validate {{-- browser-default --}}" name="cat" id="editCar-{{ $product->id }}"
+                      {{-- <div class="input-field col s6">
+                          <select class="validate {{-- browser-default -" name="cat" id="editCar-{{ $product->id }}"
                               required>
                               <option disabled>Selecionar Categoria</option>
                               @foreach ($categoriesMenu as $category)
@@ -25,13 +25,15 @@
                               @endforeach
                           </select>
                           <label for="editCar-{{ $product->id }}">Selecionar Categoria</label>
-                      </div>
+                      </div> --}}
 
                       <div class="input-field col s6">
                           <select name="cat" required>
                               <option value="" disabled selected>Selecionar Categoria</option>
                               @foreach ($categoriesMenu as $category)
-                                  <option value="{{ $category->id }}">{{ Str::ucfirst($category->name) }}</option>
+                                  <option value="{{ $category->id }}"
+                                      {{ $product->cat == $category->id ? 'selected' : '' }}>
+                                      {{ Str::ucfirst($category->name) }}</option>
                               @endforeach
                           </select>
                           <label>Selecionar Categoria</label>
