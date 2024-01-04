@@ -26,7 +26,7 @@ class AppServiceProvider extends ServiceProvider
     {
         $categoriesMenu = Category::all();
         view()->share('categoriesMenu', $categoriesMenu);
-        
+
         $brandsMenu = Brand::all();
         view()->share('brandsMenu', $brandsMenu);
     }

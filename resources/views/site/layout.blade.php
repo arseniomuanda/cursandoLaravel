@@ -14,27 +14,9 @@
 <body>
     <nav class="red">
         <div class="nav-wrapper container">
-            <a class="center brand-logo " href="{{ route('site.index') }}"><img src="{{ asset('img/logo.png') }}"
-                    height="60px"></a>
-            <ul id="nav-mobile" class="left">
-                <li><a href="{{ route('site.index') }}">Home</a></li>
-                <!-- Dropdown Trigger -->
-                <li><a class='dropdown-trigger' href="" data-target='dw-cat'>Categorias <i
-                            class="material-icons right">expand_more</i></a>
-                    <!-- Dropdown Structure -->
-                    <ul id='dw-cat' class='dropdown-content'>
-                        @foreach ($categoriesMenu as $category)
-                            <li><a href="{{ route('site.category', $category->id) }}">{{ Str::ucfirst($category->name) }}</a></li>
-                        @endforeach
 
-                    </ul>
-                </li>
-                <li>
-                    @auth
-                        <a href="{{ route('site.cart') }}">Carrinho <span class="new badge orange"data-badge-caption>{{ \Cart::session(auth()->id())->getContent()->count() }}</span></a></li>
-                    @endauth
-                            
-            </ul>
+            <a class="left brand-logo" href="{{ route('site.index') }}"><img src="{{ asset('img/logo.png') }}"
+                    height="60px"></a>
 
             <ul id="nav-mobile" class="right">
                 @auth
@@ -50,7 +32,41 @@
                     <li><a href="{{ route('login') }}">Sing In <i class="material-icons right">lock</i></a></li>
                 @endauth
             </ul>
+            <ul id="nav-mobile" class="right">
+                <li><a href="{{ route('site.index') }}">Home</a></li>
+                <!-- Dropdown Trigger -->
+                <li><a class='dropdown-trigger' href="" data-target='dw-brand'>Marcas <i
+                            class="material-icons right">expand_more</i></a>
+                    <!-- Dropdown Structure -->
+                    <ul id='dw-brand' class='dropdown-content'>
+                        @foreach ($brandsMenu as $brand)
+                            <li><a href="{{ route('site.brand', $brand->id) }}">{{ Str::ucfirst($brand->name) }}</a>
+                            </li>
+                        @endforeach
 
+                    </ul>
+                </li>
+                <li>
+                    <a class='dropdown-trigger' href="" data-target='dw-cat'>Categorias <i
+                            class="material-icons right">expand_more</i></a>
+                    <!-- Dropdown Structure -->
+                    <ul id='dw-cat' class='dropdown-content'>
+                        @foreach ($categoriesMenu as $category)
+                            <li><a
+                                    href="{{ route('site.category', $category->id) }}">{{ Str::ucfirst($category->name) }}</a>
+                            </li>
+                        @endforeach
+
+                    </ul>
+                </li>
+                <li>
+                    @auth
+                        <a href="{{ route('site.cart') }}">Carrinho <span
+                                class="new badge orange"data-badge-caption>{{ \Cart::session(auth()->id())->getContent()->count() }}</span></a>
+                    </li>
+                @endauth
+
+            </ul>
 
         </div>
     </nav>

@@ -40,6 +40,7 @@
 
 
                       <div class="input-field col s6">
+                        
                           <label>Selecionar Marca</label>
                           <select class="validate browser-default" name="cat" id="editCar-{{ $product->id }}"
                               required>
@@ -53,16 +54,20 @@
                       </div>
 
                       <div class="input-field col s6">
-                          <label>Selecionar Categoria</label>
-                          <select class="validate browser-default" name="cat" id="editCar-{{ $product->id }}"
-                              required>
-                              <option disabled>Selecionar Categoria</option>
-                              @foreach ($categoriesMenu as $category)
-                                  <option value="{{ $category->id }}"
-                                      {{ $product->cat == $category->id ? 'selected' : '' }}>
-                                      {{ Str::ucfirst($category->name) }}</option>
-                              @endforeach
-                          </select>
+                          <div class="row">
+                              <div class="col s3"><label>Selecionar Categoria</label></div>
+                              <div class="col s9">
+                                  <select class="validate browser-default" name="cat"
+                                      id="editCar-{{ $product->id }}" required>
+                                      <option disabled>Selecionar Categoria</option>
+                                      @foreach ($categoriesMenu as $category)
+                                          <option value="{{ $category->id }}"
+                                              {{ $product->cat == $category->id ? 'selected' : '' }}>
+                                              {{ Str::ucfirst($category->name) }}</option>
+                                      @endforeach
+                                  </select>
+                              </div>
+                          </div>
                       </div>
 
                       <div class="input-field col s12">

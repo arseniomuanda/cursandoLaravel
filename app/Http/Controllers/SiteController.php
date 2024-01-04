@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Produto;
 use App\Models\User;
@@ -44,5 +45,12 @@ class SiteController extends Controller
         $products = Produto::where('cat', $id)->paginate(9);
         $category = Category::find($id);
         return view('site.categoria', compact('products', 'category'));
+    }
+
+    public function brand($id)
+    {
+        $products = Produto::where('brand', $id)->paginate(9);
+        $brand = Brand::find($id);
+        return view('site.brand', compact('products', 'brand'));
     }
 }

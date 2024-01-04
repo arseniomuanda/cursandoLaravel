@@ -45,7 +45,9 @@
                         <th>ID</th>
                         <th>Produto</th>
                         <th>Preço</th>
+                        <th>Qtd. Stock</th>
                         <th>Categoria</th>
+                        <th>Marca</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -58,7 +60,9 @@
                             <td>#{{ $item->id }}</td>
                             <td>{{ $item->name }}</td>
                             <td>AOA {{ number_format($item->price, '2', ',', '.') }}</td>
+                            <td>{{ $item->qtd }}</td>
                             <td>{{ Str::ucfirst($item->getCategory->name) }}</td>
+                            <td>{{ Str::ucfirst($item->getBrand->name) }}</td>
                             <td><a class="btn-floating  waves-effect waves-light orange modal-trigger"
                                     href="#edit-{{ $item->id }}"><i class="material-icons">mode_edit</i></a>
                                 <a class="btn-floating  waves-effect waves-light red modal-trigger"
