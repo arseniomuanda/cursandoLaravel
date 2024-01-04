@@ -14,31 +14,6 @@
                           <label for="name-{{ $product->id }}">Nome</label>
                       </div>
 
-                      {{-- <div class="input-field col s6">
-                          <select class="validate {{-- browser-default -" name="cat" id="editCar-{{ $product->id }}"
-                              required>
-                              <option disabled>Selecionar Categoria</option>
-                              @foreach ($categoriesMenu as $category)
-                                  <option value="{{ $category->id }}"
-                                      {{ $product->cat == $category->id ? 'selected' : '' }}>
-                                      {{ Str::ucfirst($category->name) }}</option>
-                              @endforeach
-                          </select>
-                          <label for="editCar-{{ $product->id }}">Selecionar Categoria</label>
-                      </div> --}}
-
-                      <div class="input-field col s6">
-                          <select name="cat" required>
-                              <option value="" disabled selected>Selecionar Categoria</option>
-                              @foreach ($categoriesMenu as $category)
-                                  <option value="{{ $category->id }}"
-                                      {{ $product->cat == $category->id ? 'selected' : '' }}>
-                                      {{ Str::ucfirst($category->name) }}</option>
-                              @endforeach
-                          </select>
-                          <label>Selecionar Categoria</label>
-                      </div>
-
                       <div class="input-field col s3">
                           <input id="price-{{ $product->id }}" type="number" name="price" min="0"
                               step="0.1" required data-error="Campo obrígatório" value="{{ $product->price }}"
@@ -48,13 +23,12 @@
 
 
                       <div class="input-field col s3">
-                          <input id="qtd-{{ $product->id }}" type="number" name="qtd"
-                              value="{{ $product->qtd }}" min="0" required data-error="Campo obrígatório"
-                              class="validate">
+                          <input id="qtd-{{ $product->id }}" type="number" name="qtd" value="{{ $product->qtd }}"
+                              min="0" required data-error="Campo obrígatório" class="validate">
                           <label for="qtd-{{ $product->id }}">Quantidade</label>
                       </div>
 
-                      <div class="file-field input-field col s6">
+                      <div class="file-field input-field col s12">
                           <div class="btn">
                               <span>Imagem</span>
                               <input type="file" name="image">
@@ -62,6 +36,33 @@
                           <div class="file-path-wrapper">
                               <input class="file-path validate" type="text">
                           </div>
+                      </div>
+
+
+                      <div class="input-field col s6">
+                          <label>Selecionar Marca</label>
+                          <select class="validate browser-default" name="cat" id="editCar-{{ $product->id }}"
+                              required>
+                              <option disabled>Selecionar Marca</option>
+                              @foreach ($brandsMenu as $brand)
+                                  <option value="{{ $brand->id }}"
+                                      {{ $product->brand == $brand->id ? 'selected' : '' }}>
+                                      {{ Str::ucfirst($brand->name) }}</option>
+                              @endforeach
+                          </select>
+                      </div>
+
+                      <div class="input-field col s6">
+                          <label>Selecionar Categoria</label>
+                          <select class="validate browser-default" name="cat" id="editCar-{{ $product->id }}"
+                              required>
+                              <option disabled>Selecionar Categoria</option>
+                              @foreach ($categoriesMenu as $category)
+                                  <option value="{{ $category->id }}"
+                                      {{ $product->cat == $category->id ? 'selected' : '' }}>
+                                      {{ Str::ucfirst($category->name) }}</option>
+                              @endforeach
+                          </select>
                       </div>
 
                       <div class="input-field col s12">

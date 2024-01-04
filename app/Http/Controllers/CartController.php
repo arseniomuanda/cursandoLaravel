@@ -8,6 +8,12 @@ use Illuminate\Http\Request;
 
 class CartController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware(['auth', 'checkemail']);
+    }
+
+
     public function cartList()
     {
         $items = \Cart::session(auth()->id())->getContent()->sort();

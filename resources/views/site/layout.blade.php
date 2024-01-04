@@ -29,8 +29,11 @@
 
                     </ul>
                 </li>
-                <li><a href="{{ route('site.cart') }}">Carrinho <span class="new badge orange"
-                            data-badge-caption>{{ \Cart::getContent()->count() }}</span></a></li>
+                <li>
+                    @auth
+                        <a href="{{ route('site.cart') }}">Carrinho <span class="new badge orange"data-badge-caption>{{ \Cart::session(auth()->id())->getContent()->count() }}</span></a></li>
+                    @endauth
+                            
             </ul>
 
             <ul id="nav-mobile" class="right">

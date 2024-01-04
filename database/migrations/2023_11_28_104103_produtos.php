@@ -27,6 +27,9 @@ return new class extends Migration
             $table->unsignedBigInteger('cat')->nullable();
             $table->foreign('cat')->references('id')->on('categories')->onDelete('set null')->cascadeOnUpdate();
 
+            $table->unsignedBigInteger('brand')->nullable();
+            $table->foreign('brand')->references('id')->on('brands')->onDelete('set null')->cascadeOnUpdate();
+
             $table->smallInteger('qtd');
             $table->timestamps();
         });
