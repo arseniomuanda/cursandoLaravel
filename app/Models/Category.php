@@ -13,4 +13,6 @@ class Category extends Model
     {
         return $this->hasMany(Produto::class, 'cat', 'id');
     }
+
+    protected $fillable = ['name', 'description', 'logo'];
 }

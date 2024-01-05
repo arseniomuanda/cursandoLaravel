@@ -2,7 +2,7 @@
 <div id="addProduct" class="modal">
     <div class="modal-content">
         <h4><i class="material-icons">domain</i> Nova categoria</h4>
-        <form class="col s12" action="{{ route('brands.store') }}" method="post" enctype="multipart/form-data">
+        <form class="col s12" action="{{ route('categories.store') }}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="row">
                 <div class="input-field col s6">

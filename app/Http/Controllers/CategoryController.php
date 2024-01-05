@@ -12,7 +12,9 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $categories = Category::paginate(5);
+        $count = Category::all()->count();
+        return view('admin.brands', compact('brands', 'count'));
     }
 
     /**
@@ -20,7 +22,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -28,7 +30,22 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => ['required', 'min:2', 'max:200'],
+            'logo' => ['max:300'],
+            'description' => ['max:800']
+        ]);
+
+        #TODO: Adicionar uma feature para validar os acessos epenas pemitir admin
+        $data = $request->all();
+        //dd($data);
+        //salvar imagem usando laravel
+        if ($request->logo) {
+            $data['logo'] = $request->logo->store('categories');
+        }
+
+        Category::create($data);
+        return redirect(route('admin.categories'))->with('success', 'Categoria adicionada com sucesso!');
     }
 
     /**
@@ -50,16 +67,33 @@ class CategoryController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Category $category)
+    public function update(Request $request, int $id)
     {
-        //
+        $request->validate([
+            'name' => ['required', 'min:2', 'max:200'],
+            'logo' => ['max:300'],
+            'description' => ['max:800']
+        ]);
+        #TODO: Adicionar uma feature para validar os acessos epenas pemitir admin
+
+        $data = $request->all();
+        //salvar imagem usando laravel
+        if ($request->image) {
+            $data['logo'] = $request->image->store('categories');
+        }
+
+        $category = Category::findOrFail($id);
+        $category->update($data);
+        return redirect(route('admin.categories'))->with('success', 'Categoria editada com sucesso!');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Category $category)
+    public function destroy(int $id)
     {
-        //
+        $category = Category::find($id);
+        $category->delete();
+        return redirect(route('admin.brands'))->with('success', 'Categoria deletada com sucesso!');
     }
 }

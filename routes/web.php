@@ -3,6 +3,7 @@
 use App\Http\Controllers\BashBoardController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProdutoController;
@@ -22,6 +23,7 @@ use App\Http\Controllers\UserController;
 
 Route::resource('produtos', ProdutoController::class);
 Route::resource('brands', BrandController::class);
+Route::resource('categories', CategoryController::class);
 Route::resource('users', UserController::class);
 
 Route::get('/', [SiteController::class, 'index'])->name('site.index');
