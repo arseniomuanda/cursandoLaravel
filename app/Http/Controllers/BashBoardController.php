@@ -29,7 +29,8 @@ class BashBoardController extends Controller
             ->groupBy('categories.name')
             ->get(); */
         $productsData = Category::with('products')->get();
-
+        $productTotals = [];
+        $productCat = [];
 
         foreach ($productsData as $value) {
             $productCat[] = "'" . ucfirst($value->category) . "'";
@@ -45,6 +46,7 @@ class BashBoardController extends Controller
             ->whereYear('created_at', date('Y'))
             ->get();
         $userMes = [];
+        $userTotals = [];
         $userTotals = [];
         foreach ($usersData as $value) {
 
@@ -116,5 +118,13 @@ class BashBoardController extends Controller
         $brands = Brand::paginate(5);
         $count = Brand::all()->count();
         return view('admin.brands', compact('brands', 'count'));
+    }
+
+
+    public function categories()
+    {
+        $categories = Category::paginate(5);
+        $count = Category::all()->count();
+        return view('admin.categories', compact('categories', 'count'));
     }
 }
