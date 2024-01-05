@@ -21,5 +21,10 @@ class Produto extends Model
         return $this->belongsTo(Category::class, 'cat');
     }
 
-    protected $fillable = ['name', 'slug', 'user', 'price', 'description', 'image', 'cat', 'qtd'];
+    public function getBrand()
+    {
+        return $this->belongsTo(Brand::class, 'brand');
+    }
+
+    protected $fillable = ['name', 'slug', 'user', 'price', 'description', 'image', 'cat', 'brand', 'qtd'];
 }

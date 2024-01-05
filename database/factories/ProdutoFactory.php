@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Brand;
 use App\Models\Category;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -27,6 +28,7 @@ class ProdutoFactory extends Factory
             'description' => fake()->paragraph(),
             'image' => fake()->imageUrl(),
             'cat' => Category::pluck('id')->random(),
+            'brand' => Brand::pluck('id')->random(),
             'qtd' => fake()->numberBetween(12, 30)
         ];
     }

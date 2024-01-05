@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Produto;
 use App\Models\User;
@@ -22,6 +23,9 @@ class SiteController extends Controller
     public function details($slug)
     {
         $product = Produto::where('slug', $slug)->first();
+        if (is_null($product)) {
+            $product = Produto::where('id', $slug)->first();
+        }
         //Gate::authorize('ver-produto', $product);
         //$this->authorize('verProduto', $product);
 
@@ -32,7 +36,7 @@ class SiteController extends Controller
         //if(Gate::allows())
         //if(Gate::denies())
         /* Podemos usar o segninte*/
-        
+
         return view('site.details', compact('product'));
     }
 
@@ -41,5 +45,12 @@ class SiteController extends Controller
         $products = Produto::where('cat', $id)->paginate(9);
         $category = Category::find($id);
         return view('site.categoria', compact('products', 'category'));
+    }
+
+    public function brand($id)
+    {
+        $products = Produto::where('brand', $id)->paginate(9);
+        $brand = Brand::find($id);
+        return view('site.brand', compact('products', 'brand'));
     }
 }

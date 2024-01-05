@@ -1,5 +1,5 @@
 @extends('admin.layout')
-@section('title', 'Admin - Produtos')
+@section('title', 'Admin - Marcas')
 @section('content')
     <div class="fixed-action-btn">
         <a class="btn-floating btn-large bg-gradient-green modal-trigger" href="#addProduct">
@@ -8,7 +8,7 @@
     </div>
 
 
-    @include('components.admin.products.create')
+    @include('components.admin.brands.create')
     @if ($errors->any())
         @foreach ($errors->all() as $error)
             {{ $error }} <br>
@@ -17,8 +17,8 @@
 
     <div class="row container crud">
         <div class="row titulo ">
-            <h1 class="left">Produtos</h1>
-            <span class="right chip">{{ $count }} produtos cadastrados</span>
+            <h1 class="left">Marcas</h1>
+            <span class="right chip">{{ $count }} marcas cadastradas</span>
         </div>
 
         <nav class="bg-gradient-blue">
@@ -43,33 +43,27 @@
                     <tr>
                         <th></th>
                         <th>ID</th>
-                        <th>Produto</th>
-                        <th>Preço</th>
-                        <th>Qtd. Stock</th>
-                        <th>Marca</th>
-                        <th>Categoria</th>
+                        <th>Nome</th>
+                        <th>Descrição</th>
                         <th></th>
                     </tr>
                 </thead>
 
                 <tbody>
-                    @foreach ($products as $item)
+                    @foreach ($brands as $item)
                         <tr>
-                            <td><img src="{{ url("storage/$item->image") }}" class="circle " width="40" height="40">
+                            <td><img src="{{ url("storage/$item->logo") }}" class="circle " width="40" height="40">
                             </td>
                             <td>#{{ $item->id }}</td>
                             <td>{{ $item->name }}</td>
-                            <td>AOA {{ number_format($item->price, '2', ',', '.') }}</td>
-                            <td>{{ $item->qtd }}</td>
-                            <td>{{ Str::ucfirst($item->getBrand->name) }}</td>
-                            <td>{{ Str::ucfirst($item->getCategory->name) }}</td>
+                            <td>{{ Str::limit($item->description, 20, '...') }}</td>
                             <td><a class="btn-floating  waves-effect waves-light orange modal-trigger"
                                     href="#edit-{{ $item->id }}"><i class="material-icons">mode_edit</i></a>
                                 <a class="btn-floating  waves-effect waves-light red modal-trigger"
                                     href="#delete-{{ $item->id }}"><i class="material-icons">delete</i></a>
                             </td>
-                            @include('components.admin.products.edit', ['product' => $item])
-                            @include('components.admin.products.delete', ['product' => $item])
+                            @include('components.admin.brands.edit', ['brand' => $item])
+                            @include('components.admin.brands.delete', ['brand' => $item])
                         </tr>
                     @endforeach
                 </tbody>
@@ -77,7 +71,7 @@
         </div>
 
         <div class="row container center">
-            {{ $products->links('custom.pagination') }}
+            {{ $brands->links('custom.pagination') }}
         </div>
     </div>
 

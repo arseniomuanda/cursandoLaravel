@@ -40,6 +40,7 @@ class ProdutoController extends Controller
             'name' => ['required', 'min:3', 'max:200'],
             'price' => ['required'],
             'cat' => ['numeric'],
+            'brand' => ['numeric'],
             'qtd' => ['numeric'],
             'image' => ['max:300'],
             'description' => ['max:800']
@@ -78,19 +79,20 @@ class ProdutoController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        
+
         $request->validate([
             'name' => ['required', 'min:3', 'max:200'],
             'price' => ['required'],
-            'category' => ['numeric'],
+            'cat' => ['numeric'],
+            'brand' => ['numeric'],
             'qtd' => ['numeric'],
             'image' => ['max:300'],
             'description' => ['max:800']
         ]);
-        
+
         $product = Produto::findOrFail($id);
         $this->authorize('verProduto', $product);
-        
+
         $data = $request->all();
         //salvar imagem usando laravel
         if ($request->image) {
@@ -100,8 +102,6 @@ class ProdutoController extends Controller
         $data['user'] = auth()->id();
         $data['slug'] = Str::slug($request->name);
 
-        return dd($data);
-        
         // Encontre o usuário pelo ID
 
         // Atualize o usuário com os dados do request
