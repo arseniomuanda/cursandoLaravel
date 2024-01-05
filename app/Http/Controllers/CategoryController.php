@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Produto;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -93,7 +94,12 @@ class CategoryController extends Controller
     public function destroy(int $id)
     {
         $category = Category::find($id);
+        $products = Produto::where('cat', $id)->get();
+        foreach ($products as $value) {
+            $value->delete();
+        }
         $category->delete();
-        return redirect(route('admin.brands'))->with('success', 'Categoria deletada com sucesso!');
+
+        return redirect(route('admin.categories'))->with('success', 'Categoria deletada com sucesso!');
     }
 }

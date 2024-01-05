@@ -6,7 +6,7 @@
         <p>Esta acção vai delectar  {{ $category->products->count() }} produtos relacionados</p>
     </div>
     <div class="modal-footer">
-        <form action="{{ route('brands.destroy', $category->id) }}" method="post">
+        <form action="{{ route('categories.destroy', $category->id) }}" method="post">
             @method('DELETE')
             @csrf
             <button type="submit" class="waves-effect waves-effect waves-green btn-flat">Confirmar</button>
