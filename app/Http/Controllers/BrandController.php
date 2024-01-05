@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Brand;
 use App\Http\Requests\StoreBrandRequest;
 use App\Http\Requests\UpdateBrandRequest;
+use App\Models\Produto;
+use Illuminate\Http\Request;
 
 class BrandController extends Controller
 {
@@ -13,7 +15,9 @@ class BrandController extends Controller
      */
     public function index()
     {
-        //
+        $brands = Brand::paginate(5);
+        $count = Brand::all()->count();
+        return view('admin.brands', compact('brands', 'count'));
     }
 
     /**
@@ -27,9 +31,23 @@ class BrandController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreBrandRequest $request)
+    public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => ['required', 'min:2', 'max:200'],
+            'logo' => ['max:300'],
+            'description' => ['max:800']
+        ]);
+
+        $data = $request->all();
+        //dd($data);
+        //salvar imagem usando laravel
+        if ($request->logo) {
+            $data['logo'] = $request->logo->store('brands');
+        }
+
+        Brand::create($data);
+        return redirect(route('admin.brands'))->with('success', 'Marca adicionada com sucesso!');
     }
 
     /**

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BashBoardController;
+use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
@@ -20,7 +21,7 @@ use App\Http\Controllers\UserController;
 */
 
 Route::resource('produtos', ProdutoController::class);
-Route::resource('brands', ProdutoController::class);
+Route::resource('brands', BrandController::class);
 Route::resource('users', UserController::class);
 
 Route::get('/', [SiteController::class, 'index'])->name('site.index');
