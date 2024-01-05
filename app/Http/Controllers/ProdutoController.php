@@ -40,6 +40,7 @@ class ProdutoController extends Controller
             'name' => ['required', 'min:3', 'max:200'],
             'price' => ['required'],
             'cat' => ['numeric'],
+            'brand' => ['numeric'],
             'qtd' => ['numeric'],
             'image' => ['max:300'],
             'description' => ['max:800']
@@ -82,7 +83,8 @@ class ProdutoController extends Controller
         $request->validate([
             'name' => ['required', 'min:3', 'max:200'],
             'price' => ['required'],
-            'category' => ['numeric'],
+            'cat' => ['numeric'],
+            'brand' => ['numeric'],
             'qtd' => ['numeric'],
             'image' => ['max:300'],
             'description' => ['max:800']
@@ -99,8 +101,6 @@ class ProdutoController extends Controller
 
         $data['user'] = auth()->id();
         $data['slug'] = Str::slug($request->name);
-
-        return dd($data);
 
         // Encontre o usuário pelo ID
 

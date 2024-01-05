@@ -20,6 +20,7 @@ use App\Http\Controllers\UserController;
 */
 
 Route::resource('produtos', ProdutoController::class);
+Route::resource('brands', ProdutoController::class);
 Route::resource('users', UserController::class);
 
 Route::get('/', [SiteController::class, 'index'])->name('site.index');
@@ -45,3 +46,4 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('user.logout');
 
 Route::get('/admin/dashboard', [BashBoardController::class, 'index'])->name('admin.dashboard');
 Route::get('/admin/products', [BashBoardController::class, 'products'])->name('admin.products');
+Route::get('/admin/brands', [BashBoardController::class, 'brands'])->name('admin.brands');

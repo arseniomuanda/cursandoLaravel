@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Produto;
 use App\Models\User;
@@ -108,5 +109,12 @@ class BashBoardController extends Controller
         $products = Produto::where('user', auth()->id())->paginate(5);
         $count = Produto::where('user', auth()->id())->get()->count();
         return view('admin.products', compact('products', 'count'));
+    }
+
+    public function brands()
+    {
+        $brands = Brand::paginate(5);
+        $count = Brand::all()->count();
+        return view('admin.brands', compact('brands', 'count'));
     }
 }

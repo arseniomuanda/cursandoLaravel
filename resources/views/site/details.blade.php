@@ -13,8 +13,9 @@
 
             <div class="row">
                 <div class="col m9">
-                    <p>Category: {{ $product->getCategory->name }} <br>
-                        By: {{ $product->getUser->name }} /
+                    <p><b>Marca:</b> {{ Str::ucfirst($product->getBrand->name) }} <br>
+                    <b>Category:</b> {{ Str::ucfirst($product->getCategory->name) }} <br>
+                    <b>By:</b> {{ $product->getUser->name }} /
                         {{ $product->created_at }}</p>
                 </div>
             </div>
