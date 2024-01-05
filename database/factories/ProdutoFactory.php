@@ -26,7 +26,7 @@ class ProdutoFactory extends Factory
             'user' => User::pluck('id')->random(),
             'price' => fake()->latitude(min:10, max:20000),
             'description' => fake()->paragraph(),
-            'image' => fake()->imageUrl(),
+            'image' => 'products/OemuwgbiPFxiIPk0RkanvazieH7b63yo40A0tyss.png'/* fake()->imageUrl() */,
             'cat' => Category::pluck('id')->random(),
             'brand' => Brand::pluck('id')->random(),
             'qtd' => fake()->numberBetween(12, 30)

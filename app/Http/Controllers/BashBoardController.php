@@ -117,4 +117,12 @@ class BashBoardController extends Controller
         $count = Brand::all()->count();
         return view('admin.brands', compact('brands', 'count'));
     }
+
+
+    public function categories()
+    {
+        $categories = Category::paginate(5);
+        $count = Category::all()->count();
+        return view('admin.categories', compact('categories', 'count'));
+    }
 }

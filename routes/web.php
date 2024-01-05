@@ -48,3 +48,4 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('user.logout');
 Route::get('/admin/dashboard', [BashBoardController::class, 'index'])->name('admin.dashboard');
 Route::get('/admin/products', [BashBoardController::class, 'products'])->name('admin.products');
 Route::get('/admin/brands', [BashBoardController::class, 'brands'])->name('admin.brands');
+Route::get('/admin/categories', [BashBoardController::class, 'categories'])->name('admin.categories');

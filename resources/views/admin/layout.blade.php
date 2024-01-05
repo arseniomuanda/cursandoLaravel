@@ -56,7 +56,7 @@
         <li><a href="{{ route('admin.dashboard') }}"><i class="material-icons">dashboard</i>Dashboard</a></li>
         <li><a href="{{ route('admin.products') }}"><i class="material-icons">playlist_add_circle</i>Produtos</a></li>
         <li><a href="{{ route('admin.brands') }}"><i class="material-icons">domain</i>Marcas</a></li>
-        <li><a href="#!"><i class="material-icons">bookmarks</i>Categorias</a></li>
+        <li><a href="{{ route('admin.categories') }}"><i class="material-icons">bookmarks</i>Categorias</a></li>
         <li><a href="#!"><i class="material-icons">shopping_cart</i>Pedidos</a></li>
         <li><a href="#!"><i class="material-icons">peoples</i>Utilizadores</a></li>
     </ul>

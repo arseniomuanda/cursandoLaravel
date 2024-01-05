@@ -1,8 +1,8 @@
 <!-- Modal Structure -->
 <div id="addProduct" class="modal">
     <div class="modal-content">
-        <h4><i class="material-icons">card_giftcard</i> Novo produto</h4>
-        <form class="col s12" action="{{ route('produtos.store') }}" method="post" enctype="multipart/form-data">
+        <h4><i class="material-icons">domain</i> Nova marca</h4>
+        <form class="col s12" action="{{ route('brands.store') }}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="row">
                 <div class="input-field col s6">
@@ -11,49 +11,17 @@
                     <label for="name">Nome</label>
                 </div>
 
-                 <div class="input-field col s3">
-                    <input id="price" type="text" name="price" min="0" required
-                        data-error="Campo obrígatório" class="validate">
-                    <label for="price">Preço</label>
-                </div>
-
-                <div class="input-field col s3">
-                    <input id="qtd" type="number" name="qtd" min="0" required
-                        data-error="Campo obrígatório" class="validate">
-                    <label for="qtd">Quantidade</label>
-                </div>
-
-                <div class="input-field col s6">
-                    <select name="brand" required>
-                        <option value="" disabled selected>Selecionar Marca</option>
-                        @foreach ($brandsMenu as $brand)
-                            <option value="{{ $brand->id }}">{{ Str::ucfirst($brand->name) }}</option>
-                        @endforeach
-                    </select>
-                    <label>Selecionar Marca</label>
-                </div>
-
-                <div class="input-field col s6">
-                    <select name="cat" required>
-                        <option value="" disabled selected>Selecionar Categoria</option>
-                        @foreach ($categoriesMenu as $category)
-                            <option value="{{ $category->id }}">{{ Str::ucfirst($category->name) }}</option>
-                        @endforeach
-                    </select>
-                    <label>Selecionar Categoria</label>
-                </div>
-
                 <div class="file-field input-field col s6">
                     <div class="btn">
-                        <span>Imagem</span>
-                        <input type="file" name="image">
+                        <span>Logo</span>
+                        <input type="file" name="logo">
                     </div>
                     <div class="file-path-wrapper">
                         <input class="file-path validate" type="text">
                     </div>
                 </div>
 
-                <div class="input-field col s6">
+                <div class="input-field col s12">
                     <textarea id="description" name="description" class="materialize-textarea" maxlength="800"></textarea>
                     <label for="description">Descrição</label>
                 </div>
