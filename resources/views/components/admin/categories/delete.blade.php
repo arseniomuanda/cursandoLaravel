@@ -1,7 +1,7 @@
 <!-- Modal Structure -->
 <div id="delete-{{ $category->id }}" class="modal">
     <div class="modal-content">
-        <h4><i class="material-icons">delete</i> Deletar Categoria</h4>
+        <h4><i class="material-icons">delete</i> Deletar categoria</h4>
         <p>Tem certeza que deseja delectar a categoria {{ $category->name }}</p>
         <p>Esta acção vai delectar  {{ $category->products->count() }} produtos relacionados</p>
     </div>

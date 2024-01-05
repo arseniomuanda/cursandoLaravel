@@ -1,7 +1,7 @@
       <!-- Modal Structure -->
       <div id="edit-{{ $category->id }}" class="modal">
           <div class="modal-content">
-              <h4><i class="material-icons">edit</i> Editar produto</h4>
+              <h4><i class="material-icons">edit</i> Editar categoria</h4>
               <form class="col s12" action="{{ route('brands.update', $category->id) }}" method="post"
                   enctype="multipart/form-data">
                   @method('PATCH')
