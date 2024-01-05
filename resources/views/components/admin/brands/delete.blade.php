@@ -3,7 +3,7 @@
     <div class="modal-content">
         <h4><i class="material-icons">delete</i> Deletar Marca</h4>
         <p>Tem certeza que deseja delectar a marca {{ $brand->name }}</p>
-        <p>Esta acção vai delectar todos  {{ $brand->products->count() }} produtos relacionados</p>
+        <p>Esta acção vai delectar  {{ $brand->products->count() }} produtos relacionados</p>
     </div>
     <div class="modal-footer">
         <form action="{{ route('brands.destroy', $brand->id) }}" method="post">
