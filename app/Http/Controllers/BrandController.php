@@ -10,6 +10,11 @@ use Illuminate\Http\Request;
 
 class BrandController extends Controller
 {
+    function __construct()
+    {
+        
+    }
+
     /**
      * Display a listing of the resource.
      */
@@ -39,6 +44,7 @@ class BrandController extends Controller
             'description' => ['max:800']
         ]);
 
+        #TODO: Adicionar uma feature para validar os acessos epenas pemitir admin
         $data = $request->all();
         //dd($data);
         //salvar imagem usando laravel
@@ -69,9 +75,24 @@ class BrandController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateBrandRequest $request, Brand $brand)
+    public function update(Request $request, int $id)
     {
-        //
+        $request->validate([
+            'name' => ['required', 'min:2', 'max:200'],
+            'logo' => ['max:300'],
+            'description' => ['max:800']
+        ]);
+        #TODO: Adicionar uma feature para validar os acessos epenas pemitir admin
+        
+        $data = $request->all();
+        //salvar imagem usando laravel
+        if ($request->image) {
+            $data['logo'] = $request->image->store('brands');
+        }
+
+        $brand = Brand::findOrFail($id);
+        $brand->update($data);
+        return redirect(route('admin.brands'))->with('success', 'Marca editada com sucesso!');
     }
 
     /**
