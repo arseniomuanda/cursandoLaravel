@@ -31,7 +31,7 @@ return new class extends Migration
             $table->foreign('brand')->references('id')->on('brands')->onDelete('set null')->cascadeOnUpdate();
 
             $table->smallInteger('qtd');
-            $table->smallInteger('sku')->comment("Limite para reposiçao no stock");
+            $table->smallInteger('sku')->nullable()->comment("Limite para reposiçao no stock");
             $table->timestamps();
         });
     }
