@@ -88,7 +88,7 @@ class CartController extends Controller
 
     public function clearCart()
     {
-        \Cart::session(auth()->id())->clear();
+        Cart::where('user', auth()->id())->delete();
         return redirect()->route('site.cart')->with('info', 'Carrinho esvaziado.')->with('subjet', 'Certo!');
     }
 }

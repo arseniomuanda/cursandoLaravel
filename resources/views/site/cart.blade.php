@@ -32,7 +32,7 @@
                 </div>
             </div>
         @else
-            <h4>Seu carrinho possui: {{ $cart->count() }}</h4>
+            <h4>Seu carrinho possui {{ $cart->count() }} itens</h4>
             <table class="responsive-table striped">
                 <thead>
                     <tr>
@@ -86,7 +86,6 @@
             <div class="card orange">
                 <div class="card-content white-text">
                     <span class="card-title"><h5>Valor total: AOA {{ number_format($total, 2, ',', '.') }}</h5></span>
-                    <p>Promoções A-loja</p>
                 </div>
             </div>
 
@@ -99,12 +98,12 @@
                 <div class="col m4"> <a href="{{ route('site.clearCart') }}"
                         class="btn waves-effect waves-light red">Limpar<i class="material-icons right">clear</i></a>
                 </div>
-                <div class="col m4"> <button class="btn waves-effect waves-light green">Finalizar Pedido<i
+                <div class="col m4"> <button class="btn waves-effect waves-light green modal-trigger"
+                                    href="#order">Finalizar Pedido<i
                             class="material-icons right">check</i></button>
                 </div>
             </div>
         @endif
-
-
+            @include('components.site.cart.order', ['cart'=> $cart])
     </div>
 @endsection
