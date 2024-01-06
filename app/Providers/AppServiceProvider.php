@@ -32,7 +32,5 @@ class AppServiceProvider extends ServiceProvider
         $brandsMenu = Brand::all();
         view()->share('brandsMenu', $brandsMenu);
 
-        $cart = Cart::where('user', auth()->id())->get();
-        view()->share('cartList', $cart);
     }
 }
