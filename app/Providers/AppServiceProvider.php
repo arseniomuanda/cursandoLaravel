@@ -3,7 +3,9 @@
 namespace App\Providers;
 
 use App\Models\Brand;
+use App\Models\Cart;
 use App\Models\Category;
+use App\Models\User;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -29,5 +31,8 @@ class AppServiceProvider extends ServiceProvider
 
         $brandsMenu = Brand::all();
         view()->share('brandsMenu', $brandsMenu);
+
+        $cart = Cart::where('user', auth()->id())->get();
+        view()->share('cartList', $cart);
     }
 }

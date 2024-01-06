@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Cart;
 use App\Models\Produto;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class CartController extends Controller
@@ -18,9 +19,10 @@ class CartController extends Controller
 
     public function cartList()
     {
-        $items = $this->cart->getContent()->sort();
+        $user = User::find(auth()->id());
 
-        return view('site.cart', compact('items'));
+        $cart = $user->cart;
+        return view('site.cart', compact('cart'));
     }
 
     public function salvarCarrinhoDB()
@@ -47,10 +49,12 @@ class CartController extends Controller
         $data = $request->all();
         $data['user'] = auth()->id();
 
-        if (Cart::where(['product'=> $request->product, 'user' => auth()->id()])->get()->count() == 1) {
-            $cart = Cart::where(['id', $data['product'], 'user' => auth()->id()])->first;
-            $data['qtd'] = (int) $cart + (int) $request->qtd;
+        if (Cart::where('product', $request->product)->where('user', auth()->id())->get()->count() > 0) {
+            $cart = Cart::where('product', $request->product)->where('user', auth()->id())->first();
+            //dd($cart);
+            $data['qtd'] = (int) $cart->qtd + (int) $request->qtd;
             $cart->update($data);
+
         } else {
             Cart::create($data);
         }

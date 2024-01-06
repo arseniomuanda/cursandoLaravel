@@ -8,15 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class Cart extends Model
 {
     use HasFactory;
-
-    public function getContent(): object
+ 
+    public function getProduct(): object
     {
-        return $this->where('user', auth()->id())->get();
+        return $this->belongsTo(Produto::class, 'product');
     }
 
     public function subTotal(): float
     {
-        return $this->qdt * Produto::find($this->id)->price;
+        return $this->qtd * Produto::find($this->product)->price;
     }
 
     public function total(): float

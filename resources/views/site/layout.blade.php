@@ -62,7 +62,7 @@
                 <li>
                     @auth
                         <a href="{{ route('site.cart') }}">Carrinho <span
-                                class="new badge orange"data-badge-caption>{{ \Cart::session(auth()->id())->getContent()->count() }}</span></a>
+                                class="new badge orange"data-badge-caption>{{ $cartList->count() }}</span></a>
                     </li>
                 @endauth
 

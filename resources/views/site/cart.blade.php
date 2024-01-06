@@ -21,7 +21,7 @@
             </div>
         @endif
 
-        @if ($items->count() == 0)
+        @if ($cart->count() == 0)
             <div class="card orange">
                 <div class="card-content white-text">
                     <span class="card-title">Carrinho Vazio!</span>
@@ -32,7 +32,7 @@
                 </div>
             </div>
         @else
-            <h4>Seu carrinho possui: {{ $items->count() }}</h4>
+            <h4>Seu carrinho possui: {{ $cart->count() }}</h4>
             <table class="responsive-table striped">
                 <thead>
                     <tr>
@@ -47,30 +47,31 @@
                 </thead>
 
                 <tbody>
-                    @foreach ($items as $item)
+                    @foreach ($cart as $item)
                         <tr>
                             <td>
-                                <a href="{{ route('site.details', $item->id) }}">
-                                    <img src="{{ url("storage/{$item->attributes->image}") }}" alt="{{ $item->name }}" width="40"
+                                <a href="{{ route('site.details', $item->getProduct->id) }}">
+                                    <img src="{{ url("storage/{$item->getProduct->image}") }}" alt="{{ $item->getProduct->name }}" width="40"
                                         height="40" class="circle">
                                 </a>
                             </td>
-                            <td>{{ $item->name }}</td>
-                            <td>AOA {{ number_format($item->price, 2, ',', '.') }}</td>
+                            <td>{{ $item->getProduct->name }}</td>
+                            <td>AOA {{ number_format($item->getProduct->price, 2, ',', '.') }}</td>
                             <td>
                                 {{-- //TODO: Adicionar e diminior quantity do item --}}
                                 {{-- Actualizar --}}
                                 <form id="updateItemCart" enctype="multipart/form-data"
-                                    action="{{ route('site.updadeCart', $item->id) }}" method="post">
+                                    action="{{ route('site.updadeCart', $item->getProduct->id) }}" method="post">
                                     @csrf
                                     <input style="font-weight:900; width: 80px" class="center white" type="number"
-                                        min="1" name="quantity" value="{{ $item->quantity }}">
+                                        min="1" name="quantity" value="{{ $item->qtd }}">
                                         <button class="btn-floating waves-effect waves-light green">
                                         <i class="material-icons">refresh</i></button>
                                 </form>
                             </td>
                             <td>
                                 {{-- //TODO: mostrar o total de cada item --}}
+                                {{ number_format($item->subTotal(), 2, ',', '.') }}
                             </td>
                             <td>
                                 {{-- Remover --}}
