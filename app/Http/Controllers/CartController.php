@@ -59,7 +59,6 @@ class CartController extends Controller
             //dd($cart);
             $data['qtd'] = (int) $cart->qtd + (int) $request->qtd;
             $cart->update($data);
-
         } else {
             Cart::create($data);
         }
@@ -77,17 +76,13 @@ class CartController extends Controller
     public function updateQuantity($id, Request $request)
     {
         $validated = $request->validate([
-            'quantity' => 'required|numeric',
+            'qtd' => 'required|numeric',
         ]);
 
-        if ($validated) {
-            \Cart::session(auth()->id())->update($id, array(
-                'quantity' => array(
-                    'relative' => false,
-                    'value' => $request->quantity
-                )
-            ));
-        }
+        $data = $request->all();
+        $cart = Cart::find($id);
+
+        $cart->update($data);
         return redirect()->route('site.cart')->with('success', 'Carrinho actualizado!');
     }
 

@@ -61,10 +61,10 @@
                                 {{-- //TODO: Adicionar e diminior quantity do item --}}
                                 {{-- Actualizar --}}
                                 <form id="updateItemCart" enctype="multipart/form-data"
-                                    action="{{ route('site.updadeCart', $item->getProduct->id) }}" method="post">
+                                    action="{{ route('site.updadeCart', $item->id) }}" method="post">
                                     @csrf
                                     <input style="font-weight:900; width: 80px" class="center white" type="number"
-                                        min="1" name="quantity" value="{{ $item->qtd }}">
+                                        min="1" name="qtd" value="{{ $item->qtd }}">
                                         <button class="btn-floating waves-effect waves-light green">
                                         <i class="material-icons">refresh</i></button>
                                 </form>
