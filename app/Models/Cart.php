@@ -9,14 +9,14 @@ class Cart extends Model
 {
     use HasFactory;
 
-    public function getContent(): array
+    public function getContent(): object
     {
         return $this->where('user', auth()->id())->get();
     }
 
     public function subTotal(): float
     {
-        return $this->quantity * $this->price;
+        return $this->qdt * Produto::find($this->id)->price;
     }
 
     public function total(): float

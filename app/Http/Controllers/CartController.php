@@ -8,15 +8,17 @@ use Illuminate\Http\Request;
 
 class CartController extends Controller
 {
+    protected $cart;
     function __construct()
     {
         $this->middleware(['auth', 'checkemail']);
+        $this->cart = new Cart();
     }
 
 
     public function cartList()
     {
-        $items = \Cart::session(auth()->id())->getContent()->sort();
+        $items = $this->cart->getContent()->sort();
 
         return view('site.cart', compact('items'));
     }
@@ -39,16 +41,18 @@ class CartController extends Controller
     {
         $product = Produto::find($request->id);
 
-        $validated = $request->validate([
-            'name' => 'required|max:255',
-            'image' => 'required',
+        $request->validate([
+            'product' => 'required|numeric',
             'id' => 'required|numeric',
-            'price' => 'required|numeric',
-            'quantity' => 'required|numeric',
+            'qdt' => 'required|numeric',
         ]);
 
-        if ($validated) {
-            \Cart::session(auth()->id())->add(array(
+        $data = $request->all();
+    
+        #TODO: verificar se já temos este item no carrinho de compras
+        
+        
+        \Cart::session(auth()->id())->add(array(
                 'id' => $request->id,
                 'name' =>  $request->name,
                 'price' =>  $request->price,
@@ -60,7 +64,6 @@ class CartController extends Controller
             ));
 
             return redirect()->route('site.cart')->with('success', 'Carrinho actualizado!');
-        }
     }
 
     public function remItem(Request $request)
