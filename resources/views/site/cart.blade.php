@@ -88,7 +88,7 @@
             </table>
             <div class="card orange">
                 <div class="card-content white-text">
-                    <span class="card-title"><h5>Valor total: AOA {{ number_format(\Cart::getTotal(), 2, ',', '.') }}</h5></span>
+                    <span class="card-title"><h5>Valor total: AOA {{ number_format($total, 2, ',', '.') }}</h5></span>
                     <p>Promoções A-loja</p>
                 </div>
             </div>

@@ -19,14 +19,5 @@ class Cart extends Model
         return $this->qtd * Produto::find($this->product)->price;
     }
 
-    public function total(): float
-    {
-        $total = 0;
-        foreach ($this->items as $item) {
-            $total += $item->subtotal();
-        }
-        return $total;
-    }
-
     protected $fillable = ['user', 'product', 'qtd'];
 }

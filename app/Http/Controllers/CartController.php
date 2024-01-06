@@ -22,7 +22,12 @@ class CartController extends Controller
         $user = User::find(auth()->id());
 
         $cart = $user->cart;
-        return view('site.cart', compact('cart'));
+
+        $total = 0;
+        foreach ($user->cart as $item) {
+            $total += $item->subtotal();
+        }
+        return view('site.cart', compact('cart', 'total'));
     }
 
     public function salvarCarrinhoDB()
