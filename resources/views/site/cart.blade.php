@@ -71,7 +71,7 @@
                             </td>
                             <td>
                                 {{-- //TODO: mostrar o total de cada item --}}
-                                {{ number_format($item->subTotal(), 2, ',', '.') }}
+                                AOA {{ number_format($item->subTotal(), 2, ',', '.') }}
                             </td>
                             <td>
                                 {{-- Remover --}}
