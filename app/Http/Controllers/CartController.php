@@ -39,31 +39,23 @@ class CartController extends Controller
 
     public function addItem(Request $request)
     {
-        $product = Produto::find($request->id);
-
         $request->validate([
             'product' => 'required|numeric',
-            'id' => 'required|numeric',
-            'qdt' => 'required|numeric',
+            'qtd' => 'required|numeric',
         ]);
 
         $data = $request->all();
-    
-        #TODO: verificar se já temos este item no carrinho de compras
-        
-        
-        \Cart::session(auth()->id())->add(array(
-                'id' => $request->id,
-                'name' =>  $request->name,
-                'price' =>  $request->price,
-                'quantity' =>  $request->quantity,
-                'attributes' => array(
-                    'image' => $request->image
-                ),
-                'associatedModel' => $product
-            ));
+        $data['user'] = auth()->id();
 
-            return redirect()->route('site.cart')->with('success', 'Carrinho actualizado!');
+        if (Cart::where(['product'=> $request->product, 'user' => auth()->id()])->get()->count() == 1) {
+            $cart = Cart::where(['id', $data['product'], 'user' => auth()->id()])->first;
+            $data['qtd'] = (int) $cart + (int) $request->qtd;
+            $cart->update($data);
+        } else {
+            Cart::create($data);
+        }
+
+        return redirect()->route('site.cart')->with('success', 'Carrinho actualizado!');
     }
 
     public function remItem(Request $request)

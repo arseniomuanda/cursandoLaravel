@@ -27,4 +27,6 @@ class Cart extends Model
         }
         return $total;
     }
+
+    protected $fillable = ['user', 'product', 'qtd'];
 }

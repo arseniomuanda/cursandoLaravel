@@ -22,22 +22,19 @@
 
             <form action="{{ route('site.addCart') }}" method="post" enctype="multipart/form-data">
                 @csrf
-                <input type="hidden" name="id" value="{{ $product->id }}">
-                <input type="hidden" name="name" value="{{ $product->name }}">
-                <input type="hidden" name="price" value="{{ $product->price }}">
-                <input type="hidden" name="image" value="{{ $product->image }}">
+                <input type="hidden" name="product" value="{{ $product->id }}">
                 <div class="row">
                     <div class="cal m9">
                         <div class="input-field col s6">
                             <i class="material-icons prefix">content_paste</i>
-                            <input id="icon_prefix" name="quantity" type="number" min="1" value="1" class="validate">
+                            <input id="icon_prefix" name="qtd" type="number" min="1" value="1" class="validate">
                             <label for="icon_prefix">Quatidade</label>
                         </div>
                     </div>
                     <div class="cal m3">
                         <div class="right">
                             <button class="waves-effect waves-light btn-large orange"><i
-                                    class="material-icons left">add_shopping_cart</i>Comprar</button>
+                                    class="material-icons left">add_shopping_cart</i>Adicionar</button>
                         </div>
                     </div>
                 </div>
