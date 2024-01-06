@@ -38,7 +38,7 @@ Route::get('/cart/clear', [CartController::class, 'clearCart'])->name('site.clea
 
 Route::post('/cart/update/{id}', [CartController::class, 'updateQuantity'])->name('site.updadeCart');
 Route::post('cart', [CartController::class, 'addItem'])->name('site.addCart');
-Route::post('/cart/remove', [CartController::class, 'remItem'])->name('site.remCart');
+Route::delete('/cart/{id}', [CartController::class, 'remItem'])->name('site.remCart');
 
 Route::view('/login', 'login.index')->name('login');
 Route::view('/resiter', 'login.register')->name('register');

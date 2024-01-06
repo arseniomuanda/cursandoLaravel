@@ -6,7 +6,7 @@
         <p>Esta acção vai delectar  {{ $brand->products->count() }} produtos relacionados</p>
     </div>
     <div class="modal-footer">
-        <form action="{{ route('brands.destroy', $brand->id) }}" method="post">
+        <form action="{{ route('site.remCart') }}" method="post">
             @method('DELETE')
             @csrf
             <button type="submit" class="waves-effect waves-effect waves-green btn-flat">Confirmar</button>

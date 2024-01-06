@@ -74,13 +74,10 @@
                                 AOA {{ number_format($item->subTotal(), 2, ',', '.') }}
                             </td>
                             <td>
-                                {{-- Remover --}}
-                                <form enctype="multipart/form-data" action="{{ route('site.remCart') }}" method="post">
-                                    @csrf
-                                    <input type="hidden" name="id" value="{{ $item->id }}">
-                                    <button class="btn-floating waves-effect waves-light red">
+                                    <button class="btn-floating  waves-effect waves-light red modal-trigger"
+                                    href="#delete-{{ $item->id }}">
                                         <i class="material-icons">delete</i></button>
-                                </form>
+                                        @include('components.site.cart.delete', ['item' => $item])
                             </td>
                         </tr>
                     @endforeach
