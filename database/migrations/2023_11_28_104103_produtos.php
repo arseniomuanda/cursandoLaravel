@@ -24,14 +24,14 @@ return new class extends Migration
 
             $table->foreign('user')->references('id')->on('users')->cascadeOnUpdate()->cascadeOnUpdate();
 
-            $table->unsignedBigInteger('cat')->nullable();
-            $table->foreign('cat')->references('id')->on('categories')->onDelete('set null')->cascadeOnUpdate();
+            $table->unsignedBigInteger('cat');
+            $table->foreign('cat')->references('id')->on('categories');
 
-            $table->unsignedBigInteger('brand')->nullable();
-            $table->foreign('brand')->references('id')->on('brands')->onDelete('set null')->cascadeOnUpdate();
+            $table->unsignedBigInteger('brand');
+            $table->foreign('brand')->references('id')->on('brands');
 
             $table->smallInteger('qtd');
-            $table->string('sku')->comment("Limite para reposiçao no stock");
+            $table->string('sku')->comment("Lote");
             $table->timestamps();
         });
     }
