@@ -30,7 +30,7 @@ class ProdutoFactory extends Factory
             'cat' => Category::pluck('id')->random(),
             'brand' => Brand::pluck('id')->random(),
             'qtd' => fake()->numberBetween(12, 30),
-            'sku' => fake()->numberBetween(2, 10)
+            'sku' => fake()->unique()->numerify('#####-#####-#####')
         ];
     }
 }

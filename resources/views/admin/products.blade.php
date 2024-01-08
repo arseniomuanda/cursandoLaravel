@@ -43,6 +43,7 @@
                     <tr>
                         <th></th>
                         <th>ID</th>
+                        <th>SKU</th>
                         <th>Produto</th>
                         <th>Preço</th>
                         <th>Qtd. Stock</th>
@@ -58,6 +59,7 @@
                             <td><img src="{{ url("storage/$item->image") }}" class="circle " width="40" height="40">
                             </td>
                             <td>#{{ $item->id }}</td>
+                            <td>{{ $item->sku }}</td>
                             <td>{{ $item->name }}</td>
                             <td>AOA {{ number_format($item->price, '2', ',', '.') }}</td>
                             <td>{{ $item->qtd }}</td>

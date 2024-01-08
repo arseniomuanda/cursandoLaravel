@@ -41,7 +41,7 @@
                         <th></th>
                         <th>U. Preço</th>
                         <th>Quantidade</th>
-                        <th>Total</th>
+                        <th>Subtotal</th>
                         <th colspan="">Opção</th>
                     </tr>
                 </thead>

@@ -40,6 +40,7 @@ class ProdutoController extends Controller
             'name' => ['required', 'min:2', 'max:200'],
             'price' => ['required'],
             'cat' => ['numeric'],
+            'sku' => ['required', 'min:4'],
             'brand' => ['numeric'],
             'qtd' => ['numeric'],
             'image' => ['max:300'],

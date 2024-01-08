@@ -26,5 +26,5 @@ class Produto extends Model
         return $this->belongsTo(Brand::class, 'brand');
     }
 
-    protected $fillable = ['name', 'slug', 'user', 'price', 'description', 'image', 'cat', 'brand', 'qtd'];
+    protected $fillable = ['name', 'slug', 'user', 'price', 'sku', 'description', 'image', 'cat', 'brand', 'qtd'];
 }
