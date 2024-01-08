@@ -13,8 +13,10 @@
 
             <div class="row">
                 <div class="col m9">
-                    <p><b>Marca:</b> {{ Str::ucfirst($product->getBrand->name) }} <br>
+                    <p><b>SKU:</b> {{ Str::upper($product->sku) }} <br>
+                    <b>Marca:</b> {{ Str::ucfirst($product->getBrand->name) }} <br>
                     <b>Category:</b> {{ Str::ucfirst($product->getCategory->name) }} <br>
+                    <b>Stock:</b> {{ $product->qtd }} <br>
                     <b>By:</b> {{ $product->getUser->name }} /
                         {{ $product->created_at }}</p>
                 </div>
