@@ -43,6 +43,12 @@
                     <label>Selecionar Categoria</label>
                 </div>
 
+                <div class="input-field col s6">
+                    <input id="qtd" type="text" name="sku" minlength="4" required
+                        data-error="Campo obrígatório" class="validate">
+                    <label title="Lote do produto" for="qtd">SKU</label>
+                </div>
+
                 <div class="file-field input-field col s6">
                     <div class="btn">
                         <span>Imagem</span>
@@ -53,7 +59,7 @@
                     </div>
                 </div>
 
-                <div class="input-field col s6">
+                <div class="input-field col s12">
                     <textarea id="description" name="description" class="materialize-textarea" maxlength="800"></textarea>
                     <label for="description">Descrição</label>
                 </div>
