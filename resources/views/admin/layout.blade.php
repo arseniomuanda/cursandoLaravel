@@ -59,12 +59,11 @@
         <li><a href="{{ route('admin.categories') }}"><i class="material-icons">bookmarks</i>Categorias</a></li>
         <li><a href="#!"><i class="material-icons">shopping_cart</i>Pedidos</a></li>
         @canany(['create-role', 'edit-role', 'delete-role'])
-            <li><a href="#!"><i class="bi bi-person-fill-gear"></i>Manage Roles</a></li>
+            <li><a href="{{ route('roles.index') }}"><i class="material-icons">enhanced_encryption</i>Manage Roles</a></li>
         @endcanany
         @canany(['create-user', 'edit-user', 'delete-user'])
-            <li><a href="#!"> <i class="bi bi-people"></i> </a>Manage Users</a></li>
+            <li><a href="{{ route('users.index') }}"> <i class="material-icons">person</i>Manage Users</a></li>
         @endcanany
-        <li><a href="{{ route('roles.index') }}"><i class="material-icons">peoples</i>Acesso</a></li>
     </ul>
     @yield('content')
 
