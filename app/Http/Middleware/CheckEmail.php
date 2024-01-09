@@ -22,13 +22,13 @@ class CheckEmail
         /**
          * Estou a criar uma confiçao para deixar logado apenas users usando gmail
          */
-        $email = auth()->user()->email;
+        /* $email = auth()->user()->email;
         $servidorDeEmail = explode('@', $email)[1];
         $servidorDeEmail = explode('.', $servidorDeEmail)[0];
 
         if ($servidorDeEmail != 'gmail') {
             return redirect(route('login'))->with('error', $servidorDeEmail);
-        }
+        } */
         return $next($request);
     }
 }

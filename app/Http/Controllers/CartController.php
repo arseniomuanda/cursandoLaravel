@@ -22,6 +22,7 @@ class CartController extends Controller
         $user = User::find(auth()->id());
 
         $cart = $user->cart;
+       // return dd($cart);
 
         $total = 0;
         foreach ($user->cart as $item) {
