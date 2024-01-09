@@ -69,15 +69,15 @@
                                         <i class="material-icons">refresh</i></button>
                                 </form>
                             </td>
-                            <td>
+                            <td><strong class="red-text">
                                 {{-- //TODO: mostrar o total de cada item --}}
-                                AOA {{ number_format($item->subTotal(), 2, ',', '.') }}
+                                AOA {{ number_format($item->subTotal(), 2, ',', '.') }}</strong>
                             </td>
                             <td>
                                     <button class="btn-floating  waves-effect waves-light red modal-trigger"
                                     href="#delete-{{ $item->id }}">
                                         <i class="material-icons">delete</i></button>
-                                        @include('components.site.cart.delete', ['item' => $item])
+                                       {{--  @include('components.site.cart.delete', ['item' => $item]) --}}
                             </td>
                         </tr>
                     @endforeach

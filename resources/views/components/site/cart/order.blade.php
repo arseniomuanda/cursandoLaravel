@@ -37,7 +37,7 @@
     </div>
     <div class="modal-footer">
         <a href="#!" class="modal-close waves-green btn right">Cancelar</a>
-        <form action="{{ route('site.remCart', $item->id) }}" method="post">
+        <form method="post" onsubmit="event.preventDefault();">
             @method('DELETE')
             @csrf
             <button type="submit" class="waves-effect waves-effect waves-green btn-flat">Confirmar</button>

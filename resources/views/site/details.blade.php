@@ -8,7 +8,7 @@
         </div>
         <div class="col s12 m6">
             <h5>{{ $product->name }}</h5>
-            <h5>AOA {{ number_format($product->price, 2, ',', '.') }}</h5>
+            <h5 class="red-text"><b>AOA {{ number_format($product->price, 2, ',', '.') }}</b></h5>
             <p>{{ $product->description }}</p>
 
             <div class="row">
@@ -16,7 +16,7 @@
                     <p><b>SKU:</b> {{ Str::upper($product->sku) }} <br>
                     <b>Marca:</b> {{ Str::ucfirst($product->getBrand->name) }} <br>
                     <b>Category:</b> {{ Str::ucfirst($product->getCategory->name) }} <br>
-                    <b>Stock:</b> {{ $product->qtd }} <br>
+                    <b>Quantidade disponível:</b> {{ $product->qtd }} <br>
                     <b>By:</b> {{ $product->getUser->name }} /
                         {{ $product->created_at }}</p>
                 </div>
